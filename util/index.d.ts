@@ -1,5 +1,5 @@
-import * as util from './index.js';
+import UI from './index.js';
 
 declare module 'vanilla-js-ui-kit/util' {
-    export { util };
+    export { UI };
 }

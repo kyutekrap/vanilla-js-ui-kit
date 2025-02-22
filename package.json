@@ -1,7 +1,7 @@
 {
   "name": "vanilla-js-ui-kit",
   "description": "Build component-driven web pages in JS without HTML and React",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "./index.js",
   "repository": {
@@ -16,8 +16,5 @@
   "devDependencies": {
     "typescript": "^5.7.3",
     "vite": "^6.1.0"
-  },
-  "dependencies": {
-    "vanilla-js-ui-kit": "^0.0.3"
   }
 }
