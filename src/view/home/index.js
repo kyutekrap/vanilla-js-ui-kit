@@ -1,4 +1,4 @@
-import { UI } from "../../../util/index.js";
+import { UI } from "vanilla-js-ui-kit/util";
 import { AppBar, BgButton, FlexBox, Small, Snackbar, SubHeader, Table, Section, Modal, Footer } from "../../ext/index.js";
 
 export class Home {

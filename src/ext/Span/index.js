@@ -1,4 +1,4 @@
-import { SpanBase } from "../../../base/index.js";
+import { SpanBase } from "vanilla-js-ui-kit";
 
 export class Span extends SpanBase {
     constructor(text = "") {

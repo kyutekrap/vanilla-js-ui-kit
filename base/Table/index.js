@@ -90,8 +90,8 @@ class Factory {
         });
         const innerGrid = this._table.querySelector('.inner-grid');
         innerGrid.innerHTML = '';
-        innerGrid = this.createColumns(innerGrid);
-        innerGrid = this.createRows(innerGrid, sortedData);
+        this.createColumns(innerGrid);
+        this.createRows(innerGrid, sortedData);
     }
 
     createColumnBorder(container) {

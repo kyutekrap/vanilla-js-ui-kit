@@ -1,5 +1,5 @@
-import { SelectBase } from "../../../base/index.js";
-import { SelectProps } from "../../../props/index.js";
+import { SelectBase } from "vanilla-js-ui-kit";
+import { SelectProps } from "vanilla-js-ui-kit/props";
 
 export class Select extends SelectBase {
     constructor(props = new SelectProps()) {

@@ -1,4 +1,4 @@
-import { HeaderBase } from "../../../base/index.js";
+import { HeaderBase } from "vanilla-js-ui-kit";
 
 export class Header extends HeaderBase {
     constructor(text = "") {

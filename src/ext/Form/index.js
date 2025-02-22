@@ -1,5 +1,5 @@
-import { FormBase } from "../../../base/index.js";
-import { FormProps } from "../../../props/index.js";
+import { FormBase } from "vanilla-js-ui-kit";
+import { FormProps } from "vanilla-js-ui-kit/props";
 
 export class Form extends FormBase {
     constructor(props = new FormProps()) {

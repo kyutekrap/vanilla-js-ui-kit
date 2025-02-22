@@ -1,5 +1,5 @@
-import { BackgroundBase } from "../../../base/index.js";
-import { BackgroundProps } from "../../../props/index.js";
+import { BackgroundBase } from "vanilla-js-ui-kit";
+import { BackgroundProps } from "vanilla-js-ui-kit/props";
 
 export class Background extends BackgroundBase {
     constructor(props = new BackgroundProps()) {

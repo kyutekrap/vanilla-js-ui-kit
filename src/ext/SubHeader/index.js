@@ -1,4 +1,4 @@
-import { SubHeaderBase } from "../../../base/index.js";
+import { SubHeaderBase } from "vanilla-js-ui-kit";
 
 export class SubHeader extends SubHeaderBase {
     constructor(text = "") {

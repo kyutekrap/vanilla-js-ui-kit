@@ -1,5 +1,5 @@
-import { SnackbarBase } from "../../../base/index.js";
-import { SnackbarProps } from "../../../props/index.js";
+import { SnackbarBase } from "vanilla-js-ui-kit";
+import { SnackbarProps } from "vanilla-js-ui-kit/props";
 
 export class Snackbar extends SnackbarBase {
     constructor(props = new SnackbarProps()) {

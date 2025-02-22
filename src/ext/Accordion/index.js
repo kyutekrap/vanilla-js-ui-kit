@@ -1,5 +1,5 @@
-import { AccordionBase } from "../../../base/index.js";
-import { AccordionProps } from "../../../props/index.js";
+import { AccordionBase } from "vanilla-js-ui-kit";
+import { AccordionProps } from "vanilla-js-ui-kit/props";
 
 export class Accordion extends AccordionBase {
     constructor(props = new AccordionProps) {

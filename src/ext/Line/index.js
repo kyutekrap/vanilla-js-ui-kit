@@ -1,5 +1,5 @@
-import { LineBase } from "../../../base/index.js";
-import { LineProps } from "../../../props/index.js";
+import { LineBase } from "vanilla-js-ui-kit";
+import { LineProps } from "vanilla-js-ui-kit/props";
 
 export class Line extends LineBase {
     constructor(props = new LineProps()) {

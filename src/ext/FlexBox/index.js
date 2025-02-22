@@ -1,5 +1,5 @@
-import { FlexBoxBase } from "../../../base/index.js";
-import { FlexBoxProps } from "../../../props/index.js";
+import { FlexBoxBase } from "vanilla-js-ui-kit";
+import { FlexBoxProps } from "vanilla-js-ui-kit/props";
 
 export class FlexBox extends FlexBoxBase {
     constructor(props = new FlexBoxProps()) {

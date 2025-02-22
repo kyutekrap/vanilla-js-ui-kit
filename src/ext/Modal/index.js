@@ -1,5 +1,5 @@
-import { ModalBase } from "../../../base/index.js";
-import { ModalProps } from "../../../props/index.js";
+import { ModalBase } from "vanilla-js-ui-kit";
+import { ModalProps } from "vanilla-js-ui-kit/props";
 
 export class Modal extends ModalBase {
     constructor(props = new ModalProps()) {

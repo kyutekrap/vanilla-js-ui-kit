@@ -1,5 +1,5 @@
-import { FooterBase } from "../../../base/index.js";
-import { FooterProps } from "../../../props/index.js";
+import { FooterBase } from "vanilla-js-ui-kit";
+import { FooterProps } from "vanilla-js-ui-kit/props";
 
 export class Footer extends FooterBase {
     constructor(props = new FooterProps()) {

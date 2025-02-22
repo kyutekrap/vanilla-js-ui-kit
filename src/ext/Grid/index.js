@@ -1,5 +1,5 @@
-import { GridBase } from "../../../base/index.js";
-import { GridProps } from "../../../props/index.js";
+import { GridBase } from "vanilla-js-ui-kit";
+import { GridProps } from "vanilla-js-ui-kit/props";
 
 export class Grid extends GridBase {
     constructor(props = new GridProps()) {

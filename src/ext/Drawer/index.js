@@ -1,5 +1,5 @@
-import { DrawerBase } from "../../../base/index.js";
-import { DrawerProps } from "../../../props/index.js";
+import { DrawerBase } from "vanilla-js-ui-kit";
+import { DrawerProps } from "vanilla-js-ui-kit/props";
 
 export class Drawer extends DrawerBase {
     constructor(props = new DrawerProps()) {

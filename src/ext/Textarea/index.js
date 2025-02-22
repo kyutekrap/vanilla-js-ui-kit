@@ -1,5 +1,5 @@
-import { TextareaBase } from "../../../base/index.js";
-import { TextareaProps } from "../../../props/index.js";
+import { TextareaBase } from "vanilla-js-ui-kit";
+import { TextareaProps } from "vanilla-js-ui-kit/props";
 
 export class Textarea extends TextareaBase {
     constructor(props = new TextareaProps()) {

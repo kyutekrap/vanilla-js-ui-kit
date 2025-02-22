@@ -1,5 +1,5 @@
-import { SectionBase } from "../../../base/index.js";
-import { SectionProps } from "../../../props/index.js";
+import { SectionBase } from "vanilla-js-ui-kit";
+import { SectionProps } from "vanilla-js-ui-kit/props";
 
 export class Section extends SectionBase {
     constructor(props = new SectionProps()) {

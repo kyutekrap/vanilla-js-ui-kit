@@ -1,5 +1,5 @@
-import { FileInputBase } from "../../../base/index.js";
-import { FileInputProps } from "../../../props/index.js";
+import { FileInputBase } from "vanilla-js-ui-kit";
+import { FileInputProps } from "vanilla-js-ui-kit/props";
 
 export class FileInput extends FileInputBase {
     constructor(props = new FileInputProps()) {
