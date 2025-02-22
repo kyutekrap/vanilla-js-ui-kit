@@ -1,7 +1,7 @@
 {
   "name": "vanilla-js-ui-kit",
   "description": "Build component-driven web pages in JS without HTML and React",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "type": "module",
   "main": "./index.js",
   "repository": {
