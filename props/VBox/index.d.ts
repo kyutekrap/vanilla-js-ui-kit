@@ -1,3 +1,3 @@
 export class VBoxProps {
-    children: any[] = [];
+    children: any[];
 }

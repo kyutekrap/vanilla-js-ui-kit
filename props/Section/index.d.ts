@@ -1,3 +1,3 @@
 export class SectionProps {
-    children: any[] = [];
+    children: any[] ;
 }

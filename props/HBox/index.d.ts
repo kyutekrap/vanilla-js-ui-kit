@@ -1,3 +1,3 @@
 export class HBoxProps {
-    children: any[] = [];
+    children: any[];
 }

@@ -1,3 +1,3 @@
 export class AppBarProps {
-    children: any[] = [];
+    children: any[];
 }

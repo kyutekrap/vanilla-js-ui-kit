@@ -1,4 +1,4 @@
 export class AccordionProps {
-    caption: string = "";
-    children: any[] = [];
+    caption: string;
+    children: any[];
 }

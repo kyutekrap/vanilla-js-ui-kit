@@ -1,3 +1,3 @@
 export class FooterProps {
-    children: any[] = [];
+    children: any[];
 }

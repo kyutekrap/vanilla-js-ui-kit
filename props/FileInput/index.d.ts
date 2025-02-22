@@ -1,11 +1,11 @@
 export class FileInputProps {
-    value: string = "";
-    editable: boolean = true;
-    placeholder: string = "";
-    width: string = "100%";
-    name: string = "";
-    required: boolean = false;
-    multiselect: boolean = false;
-    accept: string = ".jpg,.png,.pdf";
-    size: number = 1;
+    value: string;
+    editable: boolean;
+    placeholder: string ;
+    width: string ;
+    name: string ;
+    required: boolean;
+    multiselect: boolean ;
+    accept: string ;
+    size: number;
 }

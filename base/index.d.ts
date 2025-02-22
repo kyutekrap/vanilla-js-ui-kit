@@ -1,61 +1,28 @@
-import { AccordionBase } from "./Accordion/index.js";
-import { AppBarBase } from "./AppBar/index.js";
-import { BackgroundBase } from "./Background/index.js";
-import { ButtonBase } from "./Button/index.js";
-import { FooterBase } from "./Footer/index.js";
-import { TableBase } from "./Table/index.js";
-import { HBoxBase } from "./HBox/index.js";
-import { HeaderBase } from "./Header/index.js";
-import { InputBase } from "./Input/index.js";
-import { LinkBase } from "./Link/index.js";
-import { SelectBase } from "./Select/index.js";
-import { SmallBase } from "./Small/index.js";
-import { SpanBase } from "./Span/index.js";
-import { SubHeaderBase } from "./SubHeader/index.js";
-import { VBoxBase } from "./VBox/index.js";
-import { SectionBase } from "./Section/index.js";
-import { FormBase } from "./Form/index.js";
-import { BgButtonBase } from "./BgButton/index.js";
-import { DrawerBase } from "./Drawer/index.js";
-import { SnackbarBase } from "./Snackbar/index.js";
-import { ModalBase } from "./Modal/index.js";
-import { TextareaBase } from "./Textarea/index.js";
-import { FileInputBase } from "./FileInput/index.js";
-import { GridBase } from "./Grid/index.js";
-import { LineBase } from "./Line/index.js";
-import { FlexBoxBase } from "./FlexBox/index.js";
-import { BorderLineBase } from "./BorderLine/index.js";
-import { SearchBase } from "./Search/index.js";
-
-declare module 'vanilla-js-ui-kit' {
-    export {
-        AccordionBase,
-        AppBarBase,
-        BackgroundBase,
-        ButtonBase,
-        FooterBase,
-        TableBase,
-        HBoxBase,
-        HeaderBase,
-        InputBase,
-        LinkBase,
-        SelectBase,
-        SmallBase,
-        SpanBase,
-        SubHeaderBase,
-        VBoxBase,
-        SectionBase,
-        FormBase,
-        BgButtonBase,
-        DrawerBase,
-        SnackbarBase,
-        ModalBase,
-        TextareaBase,
-        FileInputBase,
-        GridBase,
-        LineBase,
-        FlexBoxBase,
-        BorderLineBase,
-        SearchBase
-    }
-}
+export * from "./Accordion/index.js";
+export * from "./AppBar/index.js";
+export * from "./Background/index.js";
+export * from "./Button/index.js";
+export * from "./Footer/index.js";
+export * from "./Table/index.js";
+export * from "./HBox/index.js";
+export * from "./Header/index.js";
+export * from "./Input/index.js";
+export * from "./Link/index.js";
+export * from "./Select/index.js";
+export * from "./Small/index.js";
+export * from "./Span/index.js";
+export * from "./SubHeader/index.js";
+export * from "./VBox/index.js";
+export * from "./Section/index.js";
+export * from "./Form/index.js";
+export * from "./BgButton/index.js";
+export * from "./Drawer/index.js";
+export * from "./Snackbar/index.js";
+export * from "./Modal/index.js";
+export * from "./Textarea/index.js";
+export * from "./FileInput/index.js";
+export * from "./Grid/index.js";
+export * from "./Line/index.js";
+export * from "./FlexBox/index.js";
+export * from "./BorderLine/index.js";
+export * from "./Search/index.js";

@@ -1,4 +1,4 @@
 export class FormProps {
-    layout: "vertical" | "horizontal" = "vertical";
-    children: any[] = [];
+    layout: "vertical" | "horizontal";
+    children: any[] ;
 }

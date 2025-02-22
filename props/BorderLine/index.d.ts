@@ -1,3 +1,3 @@
 export class BorderLineProps {
-    children: any[] = [];
+    children: any[];
 }

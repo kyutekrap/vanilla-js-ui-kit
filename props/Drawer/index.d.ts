@@ -1,3 +1,3 @@
 export class DrawerProps {
-    children: any[] = [];
+    children: any[];
 }
