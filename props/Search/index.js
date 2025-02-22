@@ -1,5 +1,0 @@
-export class SearchProps {
-    constructor() {
-
-    }
-}
