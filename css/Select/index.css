@@ -1,0 +1,36 @@
+.select {
+    position: relative;
+}
+
+.select .optionContainer {
+    display: none;
+    border-radius: var(--border-radius);
+    position: absolute;
+    top: 40px;
+    border: 1px solid var(--gray-color);
+    z-index: 1;
+    background-color: var(--bg-color);
+    padding: var(--quarter-padding);
+    max-height: 300px;
+}
+
+.select .optionContainer.open {
+    display: block;
+}
+
+.select .option {
+    display: block;
+    cursor: pointer;
+    padding-top: var(--quarter-padding);
+    padding-bottom: var(--quarter-padding);
+}
+
+.select .option.filter {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .select {
+        width: calc(100% - var(--half-padding) - 2px);
+    }
+}

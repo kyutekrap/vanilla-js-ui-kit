@@ -1,0 +1,47 @@
+.table {
+    font-size: var(--normal-font-size);
+}
+
+.table .inner-grid {
+    display: grid;
+    overflow-x: auto;
+}
+
+.table .checkbox-column {
+    padding: var(--padding);
+    border-bottom: 1px solid var(--neutral-color);
+    display: flex;
+    align-items: center;
+}
+
+.table .column {
+    position: relative;
+    text-align: left;
+    padding: var(--padding);
+    border-bottom: 1px solid var(--neutral-color);
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.table .column-border {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: var(--quarter-padding);
+    cursor: col-resize;
+    z-index: 1;
+}
+
+.table .cell-span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    color: var(--text-color);
+}
+
+.table .active {
+    color: var(--main-color);
+}
