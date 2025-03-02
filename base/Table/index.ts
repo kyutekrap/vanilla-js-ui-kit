@@ -3,30 +3,43 @@ import { InputBase as Input } from "../Input";
 import { SpanBase as Span } from "../Span";
 import { VBoxBase as VBox } from "../VBox";
 
-// TODO
 class Factory {
 
     _props: TableProps;
     _columnWidths: string[];
-    _checkboxes;
-    _activeIndex;
-    _filterCol;
-    _filterDir;
+    _checkboxes: HTMLInputElement[];
+    _activeIndex: number | null;
+    _filterCol: string;
+    _filterDir: 1 | -1;
+    _table: HTMLDivElement | undefined;
+    _container: HTMLDivElement | undefined;
 
     constructor(props: TableProps) {
         this._props = props;
         this._columnWidths = this.getColumnWidths();
         this._checkboxes = [];
+        this._activeIndex = null;
+        this._filterCol = '';
+        this._filterDir = 1;
+    }
+
+    createTable(): HTMLDivElement {
+        const table = new VBox();
+        table._vBox.classList.add("table");
+        this._table = table._vBox;
+        return table._vBox;
     }
 
     getColumnWidths(): string[] {
-        var containerWidth = this._props.defaultWidth;
+        var containerWidth;
         if (!this._props.defaultWidth) {
             const rootStyles = getComputedStyle(document.documentElement);
             const defaultWidth = parseFloat(rootStyles.getPropertyValue("--section-width-default"));
             const mobileWidth = parseFloat(rootStyles.getPropertyValue("--section-width-mobile"));
             const percentage = window.matchMedia("(max-width: 768px)").matches ? mobileWidth : defaultWidth;
             containerWidth = window.innerWidth * percentage;
+        } else {
+            containerWidth = this._props.defaultWidth;
         }
         if (this._props.checkbox) {
             const dividedWidth = Math.round((containerWidth - 50) / this._props.columns.length - 15);
@@ -43,27 +56,26 @@ class Factory {
         const innerGrid = document.createElement("div");
         innerGrid.classList.add("inner-grid");
         innerGrid.style.gridTemplateColumns = this._columnWidths.join(" ");
+        this._container = innerGrid;
         return innerGrid;
     }
 
-    createCheckBoxColumn(): { checkBoxInput: Input, checkboxColumn: HTMLDivElement } {
+    createCheckBoxColumn(): { checkboxInput: HTMLInputElement, checkboxColumn: HTMLDivElement } {
         const checkboxColumn = document.createElement("div");
         checkboxColumn.classList.add("checkbox-column");
         const checkboxInput = new Input({
             variant: "checkbox"
         });
-        checkboxInput.initialize();
         checkboxColumn.appendChild(checkboxInput._input);
-        return { checkboxInput, checkboxColumn };
+        return { checkboxInput: checkboxInput._input, checkboxColumn: checkboxColumn };
     }
 
-    createColumnLink(): HTMLSpanElement {
+    createColumnLink(i: number): HTMLSpanElement {
         const columnLink = new Span(this._props.columns[i]);
-        columnLink.initialize();
         if (this._props.useAutoSort) {
             columnLink._span.style.cursor = "pointer";
             columnLink._span.addEventListener('click', (_) => {
-                this.sortHandler(columnLink._span.textContent);
+                this.sortHandler(columnLink._span.textContent || '');
             });
             if (this._props.columns[i] === this._filterCol) {
                 columnLink._span.classList.add("active");
@@ -83,40 +95,43 @@ class Factory {
             this._filterCol = filterCol;
             this._filterDir = 1;
         }
-        const sortedData = this._data.sort((a, b) => {
+        const sortedData = this._props.data.sort((a, b) => {
             const valA = a[this._filterCol];
             const valB = b[this._filterCol];
             if (valA < valB) return -1 * this._filterDir;
             if (valA > valB) return 1 * this._filterDir;
             return 0;
         });
-        const innerGrid = this._table.querySelector('.inner-grid');
-        innerGrid.innerHTML = '';
-        this.createColumns(innerGrid);
-        this.createRows(innerGrid, sortedData);
+        if (this._table !== undefined) {
+            const innerGrid = this._table.querySelector('.inner-grid') as HTMLDivElement;
+            innerGrid.innerHTML = '';
+            this.createColumns(innerGrid);
+            this.createRows(innerGrid, sortedData);
+        }
     }
 
-    createColumnBorder(container) {
+    createColumnBorder(i: number): HTMLDivElement {
         const columnBorder = document.createElement("div");
         columnBorder.classList.add("column-border");
-        columnBorder.dataset.index = i;
-        columnBorder.addEventListener("mousedown", (e) => this.handleMouseDown(e, container));
+        columnBorder.dataset.index = i.toString();
+        columnBorder.addEventListener("mousedown", (e) => this.handleMouseDown(e));
         return columnBorder;
     }
 
-    handleMouseDown(event, innerGrid) {
-        const index = parseInt(event.target.dataset.index, 10) + this._props.checkbox ? 1 : 0;
+    handleMouseDown(event: MouseEvent): void {
+        const target = event.target as HTMLElement;
+        const index = parseInt(target?.dataset.index || '0', 10) + (this._props.checkbox ? 1 : 0);
         this._activeIndex = index;
-        document.addEventListener("mousemove", (e) => this.handleMouseMove(e, innerGrid));
-        document.addEventListener("mouseup", (e) => this.handleMouseUp(e));
-    }
+        document.addEventListener("mousemove", (e) => this.handleMouseMove(e));
+        document.addEventListener("mouseup", this.handleMouseUp);
+    }    
 
-    handleMouseMove = (event, innerGrid) => {
-        if (this._activeIndex !== null) {
-            const newWidth = event.clientX - this._props.getBoundingClientRect().left;
+    handleMouseMove = (event: MouseEvent): void => {
+        if (this._activeIndex !== null && this._container !== undefined) {
+            const newWidth = event.clientX - this._container.getBoundingClientRect().left;
             const minWidth = 150;
             this._columnWidths[this._activeIndex] = `${Math.max(minWidth, newWidth)}px`;
-            innerGrid.style.gridTemplateColumns = this._columnWidths.join(" ");
+            this._container.style.gridTemplateColumns = this._columnWidths.join(" ");
         }
     };
 
@@ -126,29 +141,29 @@ class Factory {
         document.removeEventListener("mouseup", this.handleMouseUp);
     };
 
-    createColumns(container) {
+    createColumns(container: HTMLDivElement): HTMLDivElement {
         for (var i=0; i < this._props.columns.length; i++) {
             if (i === 0 && this._props.checkbox) {
                 const { checkboxInput, checkboxColumn } = this.createCheckBoxColumn();
-                checkboxInput._input.addEventListener("change", (e) => {
+                checkboxInput.addEventListener("change", (e) => {
                     for (var j=0; j<this._checkboxes.length; j++) {
-                        this._checkboxes[j].checked = e.target.checked;
+                        this._checkboxes[j].checked = (e.target as HTMLInputElement).checked;
                     }
                 });
                 container.appendChild(checkboxColumn);
             }
             const column = document.createElement("div");
             column.classList.add("column");
-            const columnLink = this.createColumnLink();
+            const columnLink = this.createColumnLink(i);
             column.appendChild(columnLink);
-            const columnBorder = this.createColumnBorder(container);
+            const columnBorder = this.createColumnBorder(i);
             column.appendChild(columnBorder);
             container.appendChild(column);
         }
         return container;
     }
 
-    createRows(container, data = this._props.data) {
+    createRows(container: HTMLDivElement, data: Record<string, any>[] = this._props.data) {
         for (var i=0; i < data.length; i++) {
             const keys = Object.keys(data[i]);
             for (var j=0; j < this._props.columns.length; j++) {
@@ -177,17 +192,15 @@ class Factory {
 export class TableBase extends Factory {
 
     _table: HTMLDivElement;
-    _container;
+    _container: HTMLDivElement;
 
     constructor(props: TableProps) {
         super(props);
-        const table = new VBox();
-        this._table = table._vBox;
-        this._table.classList.add("table");
+        this._table = super.createTable();
         this._container = super.createContainer();
         this._container = super.createColumns(this._container);
         this._container = super.createRows(this._container);
         this._table.appendChild(this._container);
-        if (super._props.controls) this._table.appendChild(super._props.controls);
+        if (props.controls) this._table.appendChild(props.controls);
     }
 }

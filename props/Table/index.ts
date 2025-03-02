@@ -4,5 +4,5 @@ export interface TableProps {
     checkbox: boolean ;
     useAutoSort: boolean;
     controls: Node;
-    defaultWidth: string | null;
+    defaultWidth?: number;
 }
