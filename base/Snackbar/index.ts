@@ -18,11 +18,9 @@ export abstract class SnackbarBase extends SnackbarFactory {
         document.body.appendChild(this._snackbar);
     }
 
-    abstract onClose(): void;
+    abstract onClose(e: any): void;
 
-    _onClose() {
-        this._closeBtn.addEventListener("click", (e) => {
-            UI.closeSnackbar();
-        });
+    _onClose(e: any) {
+        UI.closeSnackbar();
     }
 }

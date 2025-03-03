@@ -1,6 +1,6 @@
 import { UI } from "../../util";
 import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
-import { AppBarDefault, BgButtonDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault } from "../../default";
+import { AppBarDefault, BgButtonDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault } from "../../default";
 
 export class Home {
     constructor() {
@@ -43,7 +43,8 @@ export class Home {
                 flexBox._flexBox,
                 profileBtn._bgButton
             ]
-        })
+        });
+        new DrawerDefault({ children: [] });
     }
 
     createTable() {

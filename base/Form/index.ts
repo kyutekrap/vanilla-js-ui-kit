@@ -10,9 +10,9 @@ export abstract class FormBase extends FormFactory {
         this._form = super.createForm();
     }
 
-    abstract onSubmit(): void;
+    abstract onSubmit(e: any): void;
 
-    _onSubmit() {
+    _onSubmit(e: any) {
         return;
     }
 }

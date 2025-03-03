@@ -1,17 +1,10 @@
-import { SearchProps } from "../../props";
-declare class Factory {
-    _props: SearchProps;
-    constructor(props: SearchProps);
-    createSearch(): HTMLDivElement;
-    createIcon(): HTMLDivElement;
-    createInput(): HTMLInputElement;
-}
-export declare abstract class SearchBase extends Factory {
+import { SearchProps } from "../../props/Search";
+import { SearchFactory } from "../../factory/Search";
+export declare abstract class SearchBase extends SearchFactory {
     _search: HTMLDivElement;
     _icon: HTMLDivElement;
     _input: HTMLInputElement;
     constructor(props: SearchProps);
-    abstract onChange(e: Event): void;
-    _onChange(e: Event): void;
+    abstract onChange(e: any): void;
+    _onChange(e: any): void;
 }
-export {};

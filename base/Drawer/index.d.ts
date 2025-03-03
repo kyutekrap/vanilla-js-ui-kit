@@ -1,15 +1,9 @@
-import { DrawerProps } from "../../props";
-declare class Factory {
-    _props: DrawerProps;
-    constructor(props: DrawerProps);
-    createCloseBtn(): HTMLDivElement;
-    addChildren(drawer: HTMLDivElement): HTMLDivElement;
-}
-export declare abstract class DrawerBase extends Factory {
+import { DrawerProps } from "../../props/Drawer";
+import { DrawerFactory } from "../../factory/Drawer";
+export declare abstract class DrawerBase extends DrawerFactory {
     _drawer: HTMLDivElement;
     _closeBtn: HTMLDivElement;
     constructor(props: DrawerProps);
-    abstract onClose(): void;
-    _onClose(): void;
+    abstract onClose(e: any): void;
+    _onClose(e: any): void;
 }
-export {};

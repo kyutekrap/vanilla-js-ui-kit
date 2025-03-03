@@ -1,11 +1,6 @@
-import { BorderLineProps } from "../../props";
-declare class Factory {
+import { BorderLineProps } from "../../props/BorderLine";
+export declare class BorderLineFactory {
     _props: BorderLineProps;
     constructor(props: BorderLineProps);
     createBorderLine(): HTMLDivElement;
 }
-export declare abstract class BorderLineBase extends Factory {
-    _borderLine: HTMLDivElement;
-    constructor(props: BorderLineProps);
-}
-export {};

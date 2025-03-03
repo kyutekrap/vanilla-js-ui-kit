@@ -5,6 +5,7 @@ import { UI } from "../../../util";
 export class DrawerButton extends BgButtonBase {
     constructor(props: BgButtonProps) {
         super(props);
+        this._bgButton.addEventListener("click", () => this.onClick());
     }
 
     onClick() {

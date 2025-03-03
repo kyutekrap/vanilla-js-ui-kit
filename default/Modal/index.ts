@@ -4,9 +4,10 @@ import { ModalProps } from "../../props/Modal";
 export class ModalDefault extends ModalBase {
     constructor(props: ModalProps = {}) {
         super(props);
+        this._closeBtn.addEventListener("click", (e) => this.onClose(e));
     }
 
-    onClose() {
-        super._onClose();
+    onClose(e: any) {
+        super._onClose(e);
     }
 }

@@ -1,15 +1,9 @@
-import { BgButtonProps } from "../../props";
-declare class Factory {
-    _props: BgButtonProps;
-    constructor(props: BgButtonProps);
-    createBgButton(): HTMLDivElement;
-    createBackground(): HTMLDivElement;
-}
-export declare abstract class BgButtonBase extends Factory {
+import { BgButtonProps } from "../../props/BgButton";
+import { BgButtonFactory } from "../../factory/BgButton";
+export declare abstract class BgButtonBase extends BgButtonFactory {
     _bgButton: HTMLDivElement;
     _background: HTMLDivElement;
     constructor(props: BgButtonProps);
-    abstract onClick(): void;
-    _onClick(): void;
+    abstract onClick(e: any): void;
+    _onClick(e: any): void;
 }
-export {};

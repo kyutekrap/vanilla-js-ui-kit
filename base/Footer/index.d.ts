@@ -1,11 +1,6 @@
-import { FooterProps } from "../../props";
-declare class Factory {
-    _props: FooterProps;
-    constructor(props: FooterProps);
-    createFooter(): HTMLDivElement;
-}
-export declare abstract class FooterBase extends Factory {
+import { FooterProps } from "../../props/Footer";
+import { FooterFactory } from "../../factory/Footer";
+export declare abstract class FooterBase extends FooterFactory {
     _footer: HTMLDivElement;
     constructor(props: FooterProps);
 }
-export {};

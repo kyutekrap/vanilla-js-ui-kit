@@ -19,29 +19,25 @@ export abstract class FileInputBase extends FileInputFactory {
         this._multiselect = props.multiselect;
     }
 
-    abstract onClick(): void;
-    abstract onChange(): void;
+    abstract onClick(e: any): void;
+    abstract onChange(e: any): void;
 
-    _onClick() {
-        this._fileInput.addEventListener("click", (e) => {
-            if (this._editable) this._fileInput.click();
-        });
+    _onClick(e: any) {
+        if (this._editable) this._fileInput.click();
     }
 
-    _onChange() {
-        this._fileInput.addEventListener("change", (e) => {
-            const files: File[] = this._multiselect && this._fileInput.files
-                ? Array.from(this._fileInput.files)
-                : this._fileInput.files
-                ? [this._fileInput.files[0]]
-                : [];
-            this._textInput.value = files.map(file => {
-                if (file.size > this._size * 1024 * 1024) {
-                    throw UIException.FILE_TOO_BIG;
-                } else {
-                    return file.name;
-                }
-            }).join(",");
-        });
+    _onChange(e: any) {
+        const files: File[] = this._multiselect && this._fileInput.files
+            ? Array.from(this._fileInput.files)
+            : this._fileInput.files
+            ? [this._fileInput.files[0]]
+            : [];
+        this._textInput.value = files.map(file => {
+            if (file.size > this._size * 1024 * 1024) {
+                throw UIException.FILE_TOO_BIG;
+            } else {
+                return file.name;
+            }
+        }).join(",");
     }
 }

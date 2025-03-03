@@ -13,9 +13,9 @@ export abstract class BgButtonBase extends BgButtonFactory {
         this._bgButton.appendChild(this._background);
     }
 
-    abstract onClick(): void;
+    abstract onClick(e: any): void;
 
-    _onClick() {
+    _onClick(e: any) {
         return;
     }
 }

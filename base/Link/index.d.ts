@@ -1,13 +1,8 @@
-import { LinkProps } from "../../props";
-declare class Factory {
-    _props: LinkProps;
-    constructor(props: LinkProps);
-    createLink(): HTMLSpanElement;
-}
-export declare abstract class LinkBase extends Factory {
+import { LinkProps } from "../../props/Link";
+import { LinkFactory } from "../../factory/Link";
+export declare abstract class LinkBase extends LinkFactory {
     _link: HTMLSpanElement;
     constructor(props: LinkProps);
-    abstract onClick(): void;
-    _onClick(): void;
+    abstract onClick(e: any): void;
+    _onClick(e: any): void;
 }
-export {};

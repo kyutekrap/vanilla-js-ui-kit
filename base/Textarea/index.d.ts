@@ -1,11 +1,6 @@
-import { TextareaProps } from "../../props";
-declare class Factory {
-    _props: TextareaProps;
-    constructor(props: TextareaProps);
-    createTextarea(): HTMLTextAreaElement;
-}
-export declare abstract class TextareaBase extends Factory {
+import { TextareaProps } from "../../props/Textarea";
+import { TextareaFactory } from "../../factory/Textarea";
+export declare abstract class TextareaBase extends TextareaFactory {
     _textarea: HTMLTextAreaElement;
     constructor(props: TextareaProps);
 }
-export {};

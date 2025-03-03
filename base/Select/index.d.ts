@@ -1,23 +1,15 @@
-import { SelectProps } from "../../props";
-declare class Factory {
-    _props: SelectProps;
-    constructor(props: SelectProps);
-    createSelect(): HTMLDivElement;
-    createInput(): HTMLInputElement;
-    createOptionContainer(input: HTMLInputElement): HTMLDivElement;
-    filterItems(optionContainer: HTMLDivElement, filterKey: string): void;
-}
-export declare abstract class SelectBase extends Factory {
+import { SelectProps } from "../../props/Select";
+import { SelectFactory } from "../../factory/Select";
+export declare abstract class SelectBase extends SelectFactory {
     _select: HTMLDivElement;
     _input: HTMLInputElement;
     _optionContainer: HTMLDivElement;
     _options: string[];
     constructor(props: SelectProps);
-    abstract onChange(): void;
-    abstract onFocus(): void;
-    abstract onFocusOut(): void;
-    _onChange(): void;
-    _onFocus(): void;
-    _onFocusOut(): void;
+    abstract onChange(e: any): void;
+    abstract onFocus(e: any): void;
+    abstract onFocusOut(e: any): void;
+    _onChange(e: any): void;
+    _onFocus(e: any): void;
+    _onFocusOut(e: any): void;
 }
-export {};

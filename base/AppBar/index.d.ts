@@ -1,11 +1,6 @@
-import { AppBarProps } from "../../props";
-declare class Factory {
-    _props: AppBarProps;
-    constructor(props: AppBarProps);
-    createHBox(): HTMLDivElement;
-}
-export declare abstract class AppBarBase extends Factory {
+import { AppBarProps } from "../../props/AppBar";
+import { AppBarFactory } from "../../factory/AppBar";
+export declare abstract class AppBarBase extends AppBarFactory {
     _appBar: HTMLDivElement;
     constructor(props: AppBarProps);
 }
-export {};

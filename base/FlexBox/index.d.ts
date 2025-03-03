@@ -1,11 +1,6 @@
-import { FlexBoxProps } from "../../props";
-declare class Factory {
-    _props: FlexBoxProps;
-    constructor(props: FlexBoxProps);
-    createFlexBox(): HTMLDivElement;
-}
-export declare abstract class FlexBoxBase extends Factory {
+import { FlexBoxProps } from "../../props/FlexBox";
+import { FlexBoxFactory } from "../../factory/FlexBox";
+export declare abstract class FlexBoxBase extends FlexBoxFactory {
     _flexBox: HTMLDivElement;
     constructor(props: FlexBoxProps);
 }
-export {};

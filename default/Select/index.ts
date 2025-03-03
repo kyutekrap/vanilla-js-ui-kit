@@ -4,17 +4,20 @@ import { SelectProps } from "../../props/Select";
 export class SelectDefault extends SelectBase {
     constructor(props: SelectProps) {
         super(props);
+        this._input.addEventListener("change", (e) => this.onChange(e));
+        this._input.addEventListener("focus", (e) => this.onFocus(e));
+        this._input.addEventListener("blur", (e) => this.onFocusOut(e));
     }
 
-    onChange() {
-        super._onChange();
+    onChange(e: any) {
+        super._onChange(e);
     }
 
-    onFocus() {
-        super._onFocus();
+    onFocus(e: any) {
+        super._onFocus(e);
     }
 
-    onFocusOut() {
-        super._onFocusOut();
+    onFocusOut(e: any) {
+        super._onFocusOut(e);
     }
 }

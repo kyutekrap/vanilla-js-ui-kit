@@ -1,6 +1,6 @@
-import { BackgroundBase } from "../../base";
-import { BackgroundProps } from "../../props";
+import { BackgroundBase } from "../../base/Background";
+import { BackgroundProps } from "../../props/Background";
 export declare class BackgroundDefault extends BackgroundBase {
     constructor(props: BackgroundProps);
-    onClick(): void;
+    onClick(e: any): void;
 }

@@ -3,10 +3,11 @@ import { ButtonProps } from "../../props/Button";
 
 export class ButtonDefault extends ButtonBase {
     constructor(props: ButtonProps) {
-        super(props);        
+        super(props);
+        this._button.addEventListener("click", (e) => this.onClick(e));   
     }
 
-    onClick() {
-        super._onClick();
+    onClick(e: any) {
+        super._onClick(e);
     }
 }

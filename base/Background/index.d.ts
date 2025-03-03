@@ -1,15 +1,9 @@
-import { BackgroundProps } from "../../props";
-declare class Factory {
-    _props: BackgroundProps;
-    constructor(props: BackgroundProps);
-    createBackground(): HTMLDivElement;
-    createBadge(): HTMLDivElement | undefined;
-}
-export declare abstract class BackgroundBase extends Factory {
+import { BackgroundProps } from "../../props/Background";
+import { BackgroundFactory } from "../../factory/Background";
+export declare abstract class BackgroundBase extends BackgroundFactory {
     _background: HTMLDivElement;
     _badge: HTMLDivElement | undefined;
     constructor(props: BackgroundProps);
-    abstract onClick(): void;
-    _onClick(): void;
+    abstract onClick(e: any): void;
+    _onClick(e: any): void;
 }
-export {};

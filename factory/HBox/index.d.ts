@@ -1,11 +1,6 @@
-import { HBoxProps } from "../../props";
-declare class Factory {
+import { HBoxProps } from "../../props/HBox";
+export declare class HBoxFactory {
     _props: HBoxProps;
     constructor(props: HBoxProps);
     createHBox(): HTMLDivElement;
 }
-export declare abstract class HBoxBase extends Factory {
-    _hBox: HTMLDivElement;
-    constructor(props?: HBoxProps);
-}
-export {};

@@ -10,9 +10,9 @@ export abstract class ButtonBase extends ButtonFactory {
         this._button = super.createButton();
     }
 
-    abstract onClick(): void;
+    abstract onClick(e: any): void;
 
-    _onClick() {
+    _onClick(e: any) {
         return;
     }
 }

@@ -1,11 +1,6 @@
-import { VBoxProps } from "../../props";
-declare class Factory {
-    _props: VBoxProps;
-    constructor(props: VBoxProps);
-    createVBox(): HTMLDivElement;
-}
-export declare abstract class VBoxBase extends Factory {
+import { VBoxProps } from "../../props/VBox";
+import { VBoxFactory } from "../../factory/VBox";
+export declare abstract class VBoxBase extends VBoxFactory {
     _vBox: HTMLDivElement;
     constructor(props?: VBoxProps);
 }
-export {};

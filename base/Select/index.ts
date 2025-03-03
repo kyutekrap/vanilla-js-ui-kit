@@ -18,33 +18,27 @@ export abstract class SelectBase extends SelectFactory {
         this._options = props.options;
     }
 
-    abstract onChange(): void;
-    abstract onFocus(): void;
-    abstract onFocusOut(): void;
+    abstract onChange(e: any): void;
+    abstract onFocus(e: any): void;
+    abstract onFocusOut(e: any): void;
 
-    _onChange(): void {
-        this._input.addEventListener("change", (e: Event) => {
-            const target = e.target as HTMLInputElement;
-            if (target) {
-                this.filterItems(this._optionContainer, target.value);
-            }
-        });
+    _onChange(e: any): void {
+        const target = e.target as HTMLInputElement;
+        if (target) {
+            this.filterItems(this._optionContainer, target.value);
+        }
     }    
 
-    _onFocus() {
-        this._input.addEventListener("focus", (_) => {
-            this._optionContainer.classList.add("open");
-        });
+    _onFocus(e: any) {
+        this._optionContainer.classList.add("open");
     }
 
-    _onFocusOut() {
-        document.addEventListener("click", (e) => {
-            if (e.target !== this._input) {
-                this._optionContainer.classList.remove("open");
-                if (!this._options.includes(this._input.value)) {
-                    this._input.value = "";
-                }
+    _onFocusOut(e: any) {
+        if (e.target !== this._input) {
+            this._optionContainer.classList.remove("open");
+            if (!this._options.includes(this._input.value)) {
+                this._input.value = "";
             }
-        });
+        }
     }
 }

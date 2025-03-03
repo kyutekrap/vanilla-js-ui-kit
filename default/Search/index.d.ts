@@ -1,6 +1,6 @@
-import { SearchBase } from "../../base";
-import { SearchProps } from "../../props";
+import { SearchBase } from "../../base/Search";
+import { SearchProps } from "../../props/Search";
 export declare class SearchDefault extends SearchBase {
     constructor(props: SearchProps);
-    onChange(): void;
+    onChange(e: any): void;
 }

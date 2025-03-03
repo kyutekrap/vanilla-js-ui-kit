@@ -1,5 +1,5 @@
-import { AppBarBase } from "../../base";
-import { AppBarProps } from "../../props";
+import { AppBarBase } from "../../base/AppBar";
+import { AppBarProps } from "../../props/AppBar";
 export declare class AppBarDefault extends AppBarBase {
     constructor(props: AppBarProps);
 }

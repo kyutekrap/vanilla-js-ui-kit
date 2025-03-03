@@ -5,5 +5,4 @@ export class AppBarDefault extends AppBarBase {
     constructor(props: AppBarProps) {
         super(props);
     }
-
 }

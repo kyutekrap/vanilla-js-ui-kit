@@ -16,9 +16,9 @@ export abstract class SearchBase extends SearchFactory {
         this._search.appendChild(this._input);
     }
 
-    abstract onChange(e: Event): void;
+    abstract onChange(e: any): void;
 
-    _onChange(e: Event) {
+    _onChange(e: any) {
         return;
     }
 }

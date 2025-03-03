@@ -1,11 +1,6 @@
-import { SectionProps } from "../../props";
-declare class Factory {
+import { SectionProps } from "../../props/Section";
+export declare class SectionFactory {
     _props: SectionProps;
     constructor(props: SectionProps);
     createSection(): HTMLDivElement;
 }
-export declare abstract class SectionBase extends Factory {
-    _section: HTMLDivElement;
-    constructor(props: SectionProps);
-}
-export {};

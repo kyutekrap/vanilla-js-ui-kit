@@ -1,11 +1,6 @@
-import { InputProps } from "../../props";
-declare class Factory {
-    _props: InputProps;
-    constructor(props: InputProps);
-    createInput(): HTMLInputElement;
-}
-export declare abstract class InputBase extends Factory {
+import { InputProps } from "../../props/Input";
+import { InputFactory } from "../../factory/Input";
+export declare abstract class InputBase extends InputFactory {
     _input: HTMLInputElement;
     constructor(props?: InputProps);
 }
-export {};

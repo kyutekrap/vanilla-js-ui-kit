@@ -13,9 +13,9 @@ export abstract class BackgroundBase extends BackgroundFactory {
         if (this._badge) this._background.appendChild(this._badge);
     }
 
-    abstract onClick(): void;
+    abstract onClick(e: any): void;
 
-    _onClick() {
+    _onClick(e: any) {
         return;
     }
 }

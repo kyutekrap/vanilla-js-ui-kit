@@ -1,13 +1,8 @@
-import { ButtonProps } from "../../props";
-declare class Factory {
-    _props: ButtonProps;
-    constructor(props: ButtonProps);
-    createButton(): HTMLButtonElement;
-}
-export declare abstract class ButtonBase extends Factory {
+import { ButtonProps } from "../../props/Button";
+import { ButtonFactory } from "../../factory/Button";
+export declare abstract class ButtonBase extends ButtonFactory {
     _button: HTMLButtonElement;
     constructor(props: ButtonProps);
-    abstract onClick(): void;
-    _onClick(): void;
+    abstract onClick(e: any): void;
+    _onClick(e: any): void;
 }
-export {};

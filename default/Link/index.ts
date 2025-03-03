@@ -4,9 +4,10 @@ import { LinkProps } from "../../props/Link";
 export class LinkDefault extends LinkBase {
     constructor(props: LinkProps) {
         super(props);
+        this._link.addEventListener("click", (e) => this.onClick(e));
     }
 
-    onClick() {
-        super._onClick();
+    onClick(e: any) {
+        super._onClick(e);
     }
 }

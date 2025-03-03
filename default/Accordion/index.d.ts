@@ -1,6 +1,6 @@
-import { AccordionBase } from "../../base";
-import { AccordionProps } from "../../props";
+import { AccordionBase } from "../../base/Accordion";
+import { AccordionProps } from "../../props/Accordion";
 export declare class AccordionDefault extends AccordionBase {
     constructor(props: AccordionProps);
-    onToggle(): void;
+    onToggle(e: any): void;
 }

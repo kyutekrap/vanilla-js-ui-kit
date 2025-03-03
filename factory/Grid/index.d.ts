@@ -1,11 +1,6 @@
-import { GridProps } from "../../props";
-declare class Factory {
+import { GridProps } from "../../props/Grid";
+export declare class GridFactory {
     _props: GridProps;
     constructor(props: GridProps);
     createGrid(): HTMLDivElement;
 }
-export declare abstract class GridBase extends Factory {
-    _grid: HTMLDivElement;
-    constructor(props: GridProps);
-}
-export {};

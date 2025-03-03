@@ -1,6 +1,6 @@
-import { DrawerBase } from "../../base";
-import { DrawerProps } from "../../props";
+import { DrawerBase } from "../../base/Drawer";
+import { DrawerProps } from "../../props/Drawer";
 export declare class DrawerDefault extends DrawerBase {
     constructor(props: DrawerProps);
-    onClose(): void;
+    onClose(e: any): void;
 }

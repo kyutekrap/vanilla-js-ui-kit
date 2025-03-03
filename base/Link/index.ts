@@ -10,9 +10,9 @@ export abstract class LinkBase extends LinkFactory {
         this._link = super.createLink();
     }
 
-    abstract onClick(): void;
+    abstract onClick(e: any): void;
 
-    _onClick() {
+    _onClick(e: any) {
         return;
     }
 }

@@ -1,7 +1,7 @@
-import { FileInputBase } from "../../base";
-import { FileInputProps } from "../../props";
+import { FileInputBase } from "../../base/FileInput";
+import { FileInputProps } from "../../props/FileInput";
 export declare class FileInputDefault extends FileInputBase {
     constructor(props: FileInputProps);
-    onClick(): void;
-    onChange(): void;
+    onClick(e: any): void;
+    onChange(e: any): void;
 }

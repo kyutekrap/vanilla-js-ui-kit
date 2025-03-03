@@ -12,16 +12,15 @@ export abstract class DrawerBase extends DrawerFactory {
         this._drawer = document.createElement("div");
         this._drawer.classList.add("drawer");
         this._closeBtn = super.createCloseBtn();
+        this._closeBtn.style.cursor = "pointer";
         this._drawer.appendChild(this._closeBtn);
         this._drawer = super.addChildren(this._drawer);
         document.body.appendChild(this._drawer);
     }
 
-    abstract onClose(): void;
+    abstract onClose(e: any): void;
 
-    _onClose() {
-        this._closeBtn.addEventListener("click", (e) => {
-            UI.closeDrawer();
-        });
+    _onClose(e: any) {
+        UI.closeDrawer();
     }
 }

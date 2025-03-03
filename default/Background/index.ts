@@ -3,10 +3,11 @@ import { BackgroundProps } from "../../props/Background";
 
 export class BackgroundDefault extends BackgroundBase {
     constructor(props: BackgroundProps) {
-        super(props);        
+        super(props); 
+        this._background.addEventListener("click", (e) => this.onClick(e));
     }
 
-    onClick() {
-        super._onClick();
+    onClick(e: any) {
+        super._onClick(e);
     }
 }

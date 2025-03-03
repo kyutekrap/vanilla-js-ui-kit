@@ -1,5 +1,5 @@
-import { FooterBase } from "../../base";
-import { FooterProps } from "../../props";
+import { FooterBase } from "../../base/Footer";
+import { FooterProps } from "../../props/Footer";
 export declare class FooterDefault extends FooterBase {
     constructor(props: FooterProps);
 }

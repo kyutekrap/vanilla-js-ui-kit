@@ -1,5 +1,5 @@
-import { TableProps } from "../../props";
-declare class Factory {
+import { TableProps } from "../../props/Table";
+export declare class TableFactory {
     _props: TableProps;
     _columnWidths: string[];
     _checkboxes: HTMLInputElement[];
@@ -25,9 +25,3 @@ declare class Factory {
     createColumns(container: HTMLDivElement): HTMLDivElement;
     createRows(container: HTMLDivElement, data?: Record<string, any>[]): HTMLDivElement;
 }
-export declare abstract class TableBase extends Factory {
-    _table: HTMLDivElement;
-    _container: HTMLDivElement;
-    constructor(props: TableProps);
-}
-export {};

@@ -1,13 +1,8 @@
-import { FormProps } from "../../props";
-declare class Factory {
-    _props: FormProps;
-    constructor(props: FormProps);
-    createForm(): HTMLFormElement;
-}
-export declare abstract class FormBase extends Factory {
+import { FormProps } from "../../props/Form";
+import { FormFactory } from "../../factory/Form";
+export declare abstract class FormBase extends FormFactory {
     _form: HTMLFormElement;
     constructor(props: FormProps);
-    abstract onSubmit(): void;
-    _onSubmit(): void;
+    abstract onSubmit(e: any): void;
+    _onSubmit(e: any): void;
 }
-export {};

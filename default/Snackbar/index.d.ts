@@ -1,6 +1,6 @@
-import { SnackbarBase } from "../../base";
-import { SnackbarProps } from "../../props";
+import { SnackbarBase } from "../../base/Snackbar";
+import { SnackbarProps } from "../../props/Snackbar";
 export declare class SnackbarDefault extends SnackbarBase {
     constructor(props?: SnackbarProps);
-    onClose(): void;
+    onClose(e: any): void;
 }

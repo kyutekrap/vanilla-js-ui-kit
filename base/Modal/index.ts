@@ -21,12 +21,10 @@ export abstract class ModalBase extends ModalFactory {
         document.body.appendChild(this._modal);
     }
 
-    abstract onClose(): void;
+    abstract onClose(e: any): void;
 
-    _onClose() {
-        this._closeBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            UI.closeModal();
-        })
+    _onClose(e: any) {
+        e.preventDefault();
+        UI.closeModal();
     }
 }

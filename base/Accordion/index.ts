@@ -25,18 +25,16 @@ export abstract class AccordionBase extends AccordionFactory {
         this._accordion.appendChild(this._content);
     }
 
-    abstract onToggle(): void;
+    abstract onToggle(e: any): void;
     
-    _onToggle(): void {
-        this._header.addEventListener('click', () => {
-            if (!this._isOpen) {
-                this._content.classList.add("open");
-                this._headerImage.style.transform = "rotate(180deg)";
-            } else {
-                this._content.classList.remove("open");
-                this._headerImage.style.transform = "rotate(0deg)";
-            }
-            this._isOpen = !this._isOpen;
-        });
+    _onToggle(e: any): void {
+        if (!this._isOpen) {
+            this._content.classList.add("open");
+            this._headerImage.style.transform = "rotate(180deg)";
+        } else {
+            this._content.classList.remove("open");
+            this._headerImage.style.transform = "rotate(0deg)";
+        }
+        this._isOpen = !this._isOpen;
     }
 }

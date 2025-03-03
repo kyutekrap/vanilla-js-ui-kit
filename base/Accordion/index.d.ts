@@ -1,13 +1,6 @@
-import { AccordionProps } from "../../props";
-declare class Factory {
-    _props: AccordionProps;
-    constructor(props: AccordionProps);
-    createHeader(): HTMLDivElement;
-    createHeaderTitle(): HTMLSpanElement;
-    createHeaderImage(): HTMLDivElement;
-    createContent(): HTMLDivElement;
-}
-export declare abstract class AccordionBase extends Factory {
+import { AccordionProps } from "../../props/Accordion";
+import { AccordionFactory } from "../../factory/Accordion";
+export declare abstract class AccordionBase extends AccordionFactory {
     _isOpen: boolean;
     _accordion: HTMLDivElement;
     _header: HTMLDivElement;
@@ -15,7 +8,6 @@ export declare abstract class AccordionBase extends Factory {
     _headerImage: HTMLDivElement;
     _content: HTMLDivElement;
     constructor(props: AccordionProps);
-    abstract onToggle(): void;
-    _onToggle(): void;
+    abstract onToggle(e: any): void;
+    _onToggle(e: any): void;
 }
-export {};
