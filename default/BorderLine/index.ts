@@ -1,5 +1,5 @@
-import { BorderLineBase } from "../../base";
-import { BorderLineProps } from "../../props";
+import { BorderLineBase } from "../../base/BorderLine";
+import { BorderLineProps } from "../../props/BorderLine";
 
 export class BorderLineDefault extends BorderLineBase {
     constructor(props: BorderLineProps) {

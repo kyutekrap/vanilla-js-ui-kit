@@ -1,5 +1,5 @@
-import { ButtonBase } from "../../base";
-import { ButtonProps } from "../../props";
+import { ButtonBase } from "../../base/Button";
+import { ButtonProps } from "../../props/Button";
 
 export class ButtonDefault extends ButtonBase {
     constructor(props: ButtonProps) {

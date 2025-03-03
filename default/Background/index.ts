@@ -1,5 +1,5 @@
-import { BackgroundBase } from "../../base";
-import { BackgroundProps } from "../../props";
+import { BackgroundBase } from "../../base/Background";
+import { BackgroundProps } from "../../props/Background";
 
 export class BackgroundDefault extends BackgroundBase {
     constructor(props: BackgroundProps) {

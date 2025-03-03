@@ -1,5 +1,5 @@
-import { SearchBase } from "../../base";
-import { SearchProps } from "../../props";
+import { SearchBase } from "../../base/Search";
+import { SearchProps } from "../../props/Search";
 
 export class SearchDefault extends SearchBase {
     constructor(props: SearchProps) {

@@ -1,24 +1,7 @@
-import { VBoxProps } from "../../props";
+import { VBoxProps } from "../../props/VBox";
+import { VBoxFactory } from "../../factory/VBox";
 
-class Factory {
-
-    _props: VBoxProps;
-
-    constructor(props: VBoxProps) {
-        this._props = props;
-    }
-
-    createVBox(): HTMLDivElement {
-        const vBox = document.createElement("div");
-        vBox.classList.add("vBox");
-        for (var i=0; i < this._props.children.length; i++) {
-            vBox.appendChild(this._props.children[i]);
-        }
-        return vBox;
-    }
-}
-
-export abstract class VBoxBase extends Factory {
+export abstract class VBoxBase extends VBoxFactory {
 
     _vBox: HTMLDivElement;
 

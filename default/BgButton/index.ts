@@ -1,5 +1,5 @@
-import { BgButtonBase } from "../../base";
-import { BgButtonProps } from "../../props";
+import { BgButtonBase } from "../../base/BgButton";
+import { BgButtonProps } from "../../props/BgButton";
 
 export class BgButtonDefault extends BgButtonBase {
     constructor(props: BgButtonProps) {

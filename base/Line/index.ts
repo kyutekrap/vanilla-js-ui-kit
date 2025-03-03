@@ -1,4 +1,4 @@
-import { LineProps } from "../../props";
+import { LineProps } from "../../props/Line";
 
 export abstract class LineBase {
 

@@ -1,21 +1,7 @@
-import { HBoxDefault } from "../../default";
-import { AppBarProps } from "../../props";
+import { AppBarProps } from "../../props/AppBar";
+import { AppBarFactory } from "../../factory/AppBar";
 
-class Factory {
-
-    _props: AppBarProps
-
-    constructor(props: AppBarProps) {
-        this._props = props;
-    }
-
-    createHBox(): HTMLDivElement {
-        const hbox = new HBoxDefault(this._props);
-        return hbox._hBox;
-    }
-}
-
-export abstract class AppBarBase extends Factory {
+export abstract class AppBarBase extends AppBarFactory {
 
     _appBar: HTMLDivElement;
 

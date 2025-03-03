@@ -1,4 +1,4 @@
-export function openModal(...args: Node[]): void {
+export function openModal(args: Node[]): void {
     const backdrop = document.querySelector(".modal");
     const modal = document.querySelector(".modal .modal-content .vbox");
 

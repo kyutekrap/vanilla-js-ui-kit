@@ -1,29 +1,8 @@
 import { UI } from "../../util";
-import { DrawerProps } from "../../props";
-import { BackgroundDefault } from "../../default";
+import { DrawerProps } from "../../props/Drawer";
+import { DrawerFactory } from "../../factory/Drawer";
 
-class Factory {
-
-    _props: DrawerProps;
-
-    constructor(props: DrawerProps) {
-        this._props = props;
-    }
-
-    createCloseBtn(): HTMLDivElement {
-        const closeButton = new BackgroundDefault({width: "30px", height: "30px", src: "/arrow-left.svg"});
-        return closeButton._background;
-    }
-
-    addChildren(drawer: HTMLDivElement): HTMLDivElement {
-        for (var i=0; i < this._props.children.length; i++) {
-            drawer.appendChild(this._props.children[i]);
-        }
-        return drawer;
-    }
-}
-
-export abstract class DrawerBase extends Factory {
+export abstract class DrawerBase extends DrawerFactory {
 
     _drawer: HTMLDivElement;
     _closeBtn: HTMLDivElement;

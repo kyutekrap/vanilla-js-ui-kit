@@ -1,5 +1,5 @@
-import { FileInputBase } from "../../base";
-import { FileInputProps } from "../../props";
+import { FileInputBase } from "../../base/FileInput";
+import { FileInputProps } from "../../props/FileInput";
 
 export class FileInputDefault extends FileInputBase {
     constructor(props: FileInputProps) {

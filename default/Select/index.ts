@@ -1,5 +1,5 @@
-import { SelectBase } from "../../base";
-import { SelectProps } from "../../props";
+import { SelectBase } from "../../base/Select";
+import { SelectProps } from "../../props/Select";
 
 export class SelectDefault extends SelectBase {
     constructor(props: SelectProps) {

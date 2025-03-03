@@ -1,4 +1,4 @@
-import { HeaderBase } from "../../base";
+import { HeaderBase } from "../../base/Header";
 
 export class HeaderDefault extends HeaderBase {
     constructor(text = "") {

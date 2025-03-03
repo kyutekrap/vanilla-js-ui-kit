@@ -1,5 +1,5 @@
-import { AccordionBase } from "../../base";
-import { AccordionProps } from "../../props";
+import { AccordionBase } from "../../base/Accordion";
+import { AccordionProps } from "../../props/Accordion";
 
 export class AccordionDefault extends AccordionBase {
     constructor(props: AccordionProps) {

@@ -1,34 +1,8 @@
-import { FileInputProps } from "../../props";
+import { FileInputProps } from "../../props/FileInput";
 import { UIException } from "../../exception";
-import { InputDefault } from "../../default";
+import { FileInputFactory } from "../../factory/FileInput";
 
-class Factory {
-
-    _props: FileInputProps;
-
-    constructor(props: FileInputProps) {
-        this._props = props;
-    }
-
-    createTextInput(): HTMLInputElement {
-        const textInput = document.createElement("input");
-        textInput.classList.add("input");
-        textInput.readOnly = true;
-        textInput.value = this._props.value;
-        textInput.placeholder = this._props.placeholder;
-        textInput.style.width = this._props.width;
-        return textInput;
-    }
-
-    createFileInput(): HTMLInputElement {
-        const fileInput = new InputDefault({ variant: "file", name: this._props.name, required: this._props.required });
-        fileInput._input.style.display = "none";
-        fileInput._input.accept = this._props.accept;
-        return fileInput._input;
-    }
-}
-
-export abstract class FileInputBase extends Factory {
+export abstract class FileInputBase extends FileInputFactory {
 
     _textInput: HTMLInputElement;
     _fileInput: HTMLInputElement;

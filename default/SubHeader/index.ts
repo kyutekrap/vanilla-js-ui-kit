@@ -1,4 +1,4 @@
-import { SubHeaderBase } from "../../base";
+import { SubHeaderBase } from "../../base/SubHeader";
 
 export class SubHeaderDefault extends SubHeaderBase {
     constructor(text = "") {

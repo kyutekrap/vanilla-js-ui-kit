@@ -1,31 +1,7 @@
-import { LinkProps } from "../../props";
-import { SmallDefault, SpanDefault } from "../../default";
+import { LinkProps } from "../../props/Link";
+import { LinkFactory } from "../../factory/Link";
 
-class Factory {
-
-    _props: LinkProps;
-
-    constructor(props: LinkProps) {
-        this._props = props;
-    }
-
-    createLink(): HTMLSpanElement {
-        var link;
-        if (this._props.size === "medium") {
-            link = new SpanDefault(this._props.text);
-            link._span.classList.add("link");
-            link._span.classList.add(this._props.variant);
-            return link._span;
-        } else {
-            link = new SmallDefault(this._props.text);
-            link._small.classList.add("link");
-            link._small.classList.add(this._props.variant);
-            return link._small;
-        }
-    }
-}
-
-export abstract class LinkBase extends Factory {
+export abstract class LinkBase extends LinkFactory {
 
     _link: HTMLSpanElement;
 

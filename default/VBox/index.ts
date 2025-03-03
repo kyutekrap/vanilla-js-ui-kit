@@ -1,5 +1,5 @@
-import { VBoxBase } from "../../base";
-import { VBoxProps } from "../../props";
+import { VBoxBase } from "../../base/VBox";
+import { VBoxProps } from "../../props/VBox";
 
 export class VBoxDefault extends VBoxBase {
     constructor(props: VBoxProps = { children: [] }) {

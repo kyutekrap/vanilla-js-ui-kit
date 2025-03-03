@@ -1,5 +1,5 @@
-import { InputBase } from "../../base";
-import { InputProps } from "../../props";
+import { InputBase } from "../../base/Input";
+import { InputProps } from "../../props/Input";
 
 export class InputDefault extends InputBase {
     constructor(props: InputProps = {}) {

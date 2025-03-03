@@ -1,44 +1,7 @@
-import { AccordionProps } from "../../props";
-import { HBoxDefault, VBoxDefault, BackgroundDefault } from "../../default";
+import { AccordionProps } from "../../props/Accordion";
+import { AccordionFactory } from "../../factory/Accordion";
 
-class Factory {
-
-    _props: AccordionProps;
-
-    constructor(props: AccordionProps) {
-        this._props = props;
-    }
-
-    createHeader(): HTMLDivElement {
-        const header = new HBoxDefault();
-        header._hBox.classList.add("accordion-header");
-        return header._hBox;
-    }
-    
-    createHeaderTitle(): HTMLSpanElement {
-        const headerTitle = document.createElement("span");
-        headerTitle.classList.add("subHeader");
-        headerTitle.textContent = this._props.caption;
-        headerTitle.style.flex = "1";
-        return headerTitle;
-    }
-
-    createHeaderImage(): HTMLDivElement {
-        const headerImage = new BackgroundDefault({ width: "25px", height: "25px", src: "/chev-down.svg" });
-        return headerImage._background;
-    }
-
-    createContent(): HTMLDivElement {
-        const content = new VBoxDefault();
-        content._vBox.classList.add("accordion-content");
-        for (let i = 0; i < this._props.children.length; i++) {
-            content._vBox.appendChild(this._props.children[i]);
-        }
-        return content._vBox;
-    }
-}
-
-export abstract class AccordionBase extends Factory {
+export abstract class AccordionBase extends AccordionFactory {
 
     _isOpen: boolean;
     _accordion: HTMLDivElement;

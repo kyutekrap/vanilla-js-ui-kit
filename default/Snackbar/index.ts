@@ -1,5 +1,5 @@
-import { SnackbarBase } from "../../base";
-import { SnackbarProps } from "../../props";
+import { SnackbarBase } from "../../base/Snackbar";
+import { SnackbarProps } from "../../props/Snackbar";
 
 export class SnackbarDefault extends SnackbarBase {
     constructor(props: SnackbarProps = {}) {
