@@ -1,5 +1,6 @@
 import { UI } from "vanilla-js-ui-kit/util";
-import { AppBar, BgButton, FlexBox, Small, Snackbar, SubHeader, Table, Section, Modal, Footer } from "../../ext/index.js";
+import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
+import { AppBarDefault, BgButtonDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault } from "vanilla-js-ui-kit/default";
 
 export class Home {
     constructor() {
@@ -14,28 +15,28 @@ export class Home {
     }
 
     createTemplate() {
-        new Snackbar();
-        new Modal();
+        new SnackbarDefault();
+        new ModalDefault();
     }
 
     createAppBar() {
-        const menuBtn = new BgButton({
+        const menuBtn = new DrawerButton({
             src: "/menu.svg",
             rounded: true,
             width: "25px",
             height: "25px"
         });
-        const subHeader = new SubHeader("My App");
-        const flexBox = new FlexBox({
-            flexGrow: 1
+        const subHeader = new SubHeaderDefault("My App");
+        const flexBox = new FlexBoxDefault({
+            flexGrow: "1"
         });
-        const profileBtn = new BgButton({
+        const profileBtn = new BgButtonDefault({
             src: "/profile.svg",
             rounded: true,
             width: "27px",
             height: "27px"
         });
-        new AppBar({
+        new AppBarDefault({
             children: [
                 menuBtn._bgButton,
                 subHeader._subHeader,
@@ -46,7 +47,7 @@ export class Home {
     }
 
     createTable() {
-        const table = new Table({
+        const table = new TableDefault({
             columns: ["Column 1", "Column 2", "Column 3"],
             data: [
                 {
@@ -68,7 +69,7 @@ export class Home {
             checkbox: true,
             useAutoSort: true
         });
-        new Section({
+        new SectionDefault({
             children: [
                 table._table
             ]
@@ -76,8 +77,8 @@ export class Home {
     }
 
     createFooter() {
-        const copyright = new Small("Created by Kyutekrap");
-        new Footer({
+        const copyright = new SmallDefault("Created by Kyutekrap");
+        new FooterDefault({
             children: [copyright._small]
         });
     }
