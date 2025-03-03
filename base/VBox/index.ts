@@ -18,7 +18,7 @@ class Factory {
     }
 }
 
-export class VBoxBase extends Factory {
+export abstract class VBoxBase extends Factory {
 
     _vBox: HTMLDivElement;
 

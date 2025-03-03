@@ -1,4 +1,4 @@
-export class SubHeaderBase {
+export abstract class SubHeaderBase {
 
     _subHeader: HTMLSpanElement;
 

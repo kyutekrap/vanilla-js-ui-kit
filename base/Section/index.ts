@@ -1,5 +1,5 @@
-import { VBoxBase as VBox } from "../VBox";
 import { SectionProps } from "../../props";
+import { VBoxDefault } from "../../default";
 
 class Factory {
 
@@ -10,7 +10,7 @@ class Factory {
     }
 
     createSection(): HTMLDivElement {
-        const section = new VBox();
+        const section = new VBoxDefault();
         section._vBox.classList.add("section");
         for (var i=0; i < this._props.children.length; i++) {
             section._vBox.appendChild(this._props.children[i]);
@@ -19,7 +19,7 @@ class Factory {
     }
 }
 
-export class SectionBase extends Factory {
+export abstract class SectionBase extends Factory {
 
     _section: HTMLDivElement;
 

@@ -1,7 +1,5 @@
-import { VBoxBase as VBox } from "../VBox";
-import { HBoxBase as HBox } from "../HBox";
-import { BackgroundBase as Background } from "../Background";
 import { AccordionProps } from "../../props";
+import { HBoxDefault, VBoxDefault, BackgroundDefault } from "../../default";
 
 class Factory {
 
@@ -12,7 +10,7 @@ class Factory {
     }
 
     createHeader(): HTMLDivElement {
-        const header = new HBox();
+        const header = new HBoxDefault();
         header._hBox.classList.add("accordion-header");
         return header._hBox;
     }
@@ -26,12 +24,12 @@ class Factory {
     }
 
     createHeaderImage(): HTMLDivElement {
-        const headerImage = new Background({ width: "25px", height: "25px", src: "/chev-down.svg" });
+        const headerImage = new BackgroundDefault({ width: "25px", height: "25px", src: "/chev-down.svg" });
         return headerImage._background;
     }
 
     createContent(): HTMLDivElement {
-        const content = new VBox();
+        const content = new VBoxDefault();
         content._vBox.classList.add("accordion-content");
         for (let i = 0; i < this._props.children.length; i++) {
             content._vBox.appendChild(this._props.children[i]);
@@ -40,7 +38,7 @@ class Factory {
     }
 }
 
-export class AccordionBase extends Factory {
+export abstract class AccordionBase extends Factory {
 
     _isOpen: boolean;
     _accordion: HTMLDivElement;
@@ -63,8 +61,10 @@ export class AccordionBase extends Factory {
         this._content = super.createContent();
         this._accordion.appendChild(this._content);
     }
+
+    abstract onToggle(): void;
     
-    onToggle(): void {
+    _onToggle(): void {
         this._header.addEventListener('click', () => {
             if (!this._isOpen) {
                 this._content.classList.add("open");

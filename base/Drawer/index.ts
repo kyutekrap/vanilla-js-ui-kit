@@ -1,6 +1,6 @@
 import { UI } from "../../util";
-import { BackgroundBase as Background } from "../Background";
 import { DrawerProps } from "../../props";
+import { BackgroundDefault } from "../../default";
 
 class Factory {
 
@@ -11,7 +11,7 @@ class Factory {
     }
 
     createCloseBtn(): HTMLDivElement {
-        const closeButton = new Background({width: "30px", height: "30px", src: "/arrow-left.svg"});
+        const closeButton = new BackgroundDefault({width: "30px", height: "30px", src: "/arrow-left.svg"});
         return closeButton._background;
     }
 
@@ -23,7 +23,7 @@ class Factory {
     }
 }
 
-export class DrawerBase extends Factory {
+export abstract class DrawerBase extends Factory {
 
     _drawer: HTMLDivElement;
     _closeBtn: HTMLDivElement;
@@ -38,7 +38,9 @@ export class DrawerBase extends Factory {
         document.body.appendChild(this._drawer);
     }
 
-    onClose() {
+    abstract onClose(): void;
+
+    _onClose() {
         this._closeBtn.addEventListener("click", (e) => {
             UI.closeDrawer();
         });

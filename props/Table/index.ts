@@ -3,6 +3,6 @@ export interface TableProps {
     data: Record<string, any>[];
     checkbox: boolean ;
     useAutoSort: boolean;
-    controls: Node;
+    controls?: Node;
     defaultWidth?: number;
 }

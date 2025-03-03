@@ -18,7 +18,7 @@ class Factory {
     }
 }
 
-export class BorderLineBase extends Factory {
+export abstract class BorderLineBase extends Factory {
 
     _borderLine: HTMLDivElement;
     

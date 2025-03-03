@@ -22,7 +22,7 @@ class Factory {
     }
 }
 
-export class InputBase extends Factory {
+export abstract class InputBase extends Factory {
 
     _input: HTMLInputElement;
 

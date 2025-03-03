@@ -1,4 +1,4 @@
-export class HeaderBase {
+export abstract class HeaderBase {
 
     _header: HTMLSpanElement;
 

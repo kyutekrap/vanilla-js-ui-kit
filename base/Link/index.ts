@@ -1,6 +1,5 @@
 import { LinkProps } from "../../props";
-import { SpanBase as Span } from "../Span";
-import { SmallBase as Small } from "../Small";
+import { SmallDefault, SpanDefault } from "../../default";
 
 class Factory {
 
@@ -13,12 +12,12 @@ class Factory {
     createLink(): HTMLSpanElement {
         var link;
         if (this._props.size === "medium") {
-            link = new Span(this._props.text);
+            link = new SpanDefault(this._props.text);
             link._span.classList.add("link");
             link._span.classList.add(this._props.variant);
             return link._span;
         } else {
-            link = new Small(this._props.text);
+            link = new SmallDefault(this._props.text);
             link._small.classList.add("link");
             link._small.classList.add(this._props.variant);
             return link._small;
@@ -26,7 +25,7 @@ class Factory {
     }
 }
 
-export class LinkBase extends Factory {
+export abstract class LinkBase extends Factory {
 
     _link: HTMLSpanElement;
 
@@ -35,7 +34,9 @@ export class LinkBase extends Factory {
         this._link = super.createLink();
     }
 
-    onClick() {
+    abstract onClick(): void;
+
+    _onClick() {
         return;
     }
 }

@@ -1,6 +1,6 @@
-import { InputBase as Input } from "../Input";
 import { FileInputProps } from "../../props";
 import { UIException } from "../../exception";
+import { InputDefault } from "../../default";
 
 class Factory {
 
@@ -21,14 +21,14 @@ class Factory {
     }
 
     createFileInput(): HTMLInputElement {
-        const fileInput = new Input({ variant: "file", name: this._props.name, required: this._props.required });
+        const fileInput = new InputDefault({ variant: "file", name: this._props.name, required: this._props.required });
         fileInput._input.style.display = "none";
         fileInput._input.accept = this._props.accept;
         return fileInput._input;
     }
 }
 
-export class FileInputBase extends Factory {
+export abstract class FileInputBase extends Factory {
 
     _textInput: HTMLInputElement;
     _fileInput: HTMLInputElement;
@@ -45,13 +45,16 @@ export class FileInputBase extends Factory {
         this._multiselect = props.multiselect;
     }
 
-    onClick() {
+    abstract onClick(): void;
+    abstract onChange(): void;
+
+    _onClick() {
         this._fileInput.addEventListener("click", (e) => {
             if (this._editable) this._fileInput.click();
         });
     }
 
-    onChange() {
+    _onChange() {
         this._fileInput.addEventListener("change", (e) => {
             const files: File[] = this._multiselect && this._fileInput.files
                 ? Array.from(this._fileInput.files)

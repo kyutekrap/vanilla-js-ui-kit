@@ -18,13 +18,11 @@ class Factory {
     }
 }
 
-export class HBoxBase extends Factory {
+export abstract class HBoxBase extends Factory {
 
     _hBox: HTMLDivElement;
 
-    constructor(props: HBoxProps = {
-        children: []
-    }) {
+    constructor(props: HBoxProps = { children: [] }) {
         super(props);
         this._hBox = super.createHBox();
     }

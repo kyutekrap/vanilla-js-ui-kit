@@ -1,5 +1,5 @@
-import { SmallBase as Small } from "../Small";
 import { BackgroundProps } from "../../props";
+import { SmallDefault } from "../../default";
 
 class Factory {
 
@@ -21,7 +21,7 @@ class Factory {
     createBadge(): HTMLDivElement | undefined {
         if (this._props.badge) {
             const badgeContainer = document.createElement("div");
-            const badgeContent = new Small(this._props.badge);
+            const badgeContent = new SmallDefault(this._props.badge);
             badgeContainer.appendChild(badgeContent._small);
             badgeContainer.classList.add("badge");
             return badgeContainer;
@@ -29,7 +29,7 @@ class Factory {
     }
 }
 
-export class BackgroundBase extends Factory {
+export abstract class BackgroundBase extends Factory {
 
     _background: HTMLDivElement;
     _badge: HTMLDivElement | undefined;
@@ -41,7 +41,9 @@ export class BackgroundBase extends Factory {
         if (this._badge) this._background.appendChild(this._badge);
     }
 
-    onClick() {
+    abstract onClick(): void;
+
+    _onClick() {
         return;
     }
 }

@@ -19,7 +19,7 @@ class Factory {
     }
 }
 
-export class GridBase extends Factory {
+export abstract class GridBase extends Factory {
 
     _grid: HTMLDivElement;
 

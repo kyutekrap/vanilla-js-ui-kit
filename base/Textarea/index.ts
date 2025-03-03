@@ -21,7 +21,7 @@ class Factory {
     }
 }
 
-export class TextareaBase extends Factory {
+export abstract class TextareaBase extends Factory {
 
     _textarea: HTMLTextAreaElement;
 

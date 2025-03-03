@@ -1,6 +1,6 @@
 import { LineProps } from "../../props";
 
-export class LineBase {
+export abstract class LineBase {
 
     _line: HTMLDivElement;
 

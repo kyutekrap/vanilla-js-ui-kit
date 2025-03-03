@@ -1,6 +1,5 @@
+import { InputDefault, SpanDefault } from "../../default";
 import { SelectProps } from "../../props";
-import { InputBase as Input } from "../Input";
-import { SpanBase as Span } from "../Span";
 
 class Factory {
 
@@ -17,7 +16,7 @@ class Factory {
     }
 
     createInput(): HTMLInputElement {
-        const input = new Input({
+        const input = new InputDefault({
             variant: "text",
             editable: this._props.editable,
             placeholder: this._props.placeholder,
@@ -33,7 +32,7 @@ class Factory {
         const optionContainer = document.createElement("div");
         optionContainer.classList.add("optionContainer");
         for (var i=0; i < this._props.options.length; i++) {
-            const option = new Span(this._props.options[i]);
+            const option = new SpanDefault(this._props.options[i]);
             option._span.classList.add("option");
             option._span.addEventListener("click", (e: MouseEvent) => {
                 input.value = (e.target as HTMLElement).innerHTML;
@@ -56,7 +55,7 @@ class Factory {
     }
 }
 
-export class SelectBase extends Factory {
+export abstract class SelectBase extends Factory {
 
     _select: HTMLDivElement;
     _input: HTMLInputElement;
@@ -73,7 +72,11 @@ export class SelectBase extends Factory {
         this._options = props.options;
     }
 
-    onChange(): void {
+    abstract onChange(): void;
+    abstract onFocus(): void;
+    abstract onFocusOut(): void;
+
+    _onChange(): void {
         this._input.addEventListener("change", (e: Event) => {
             const target = e.target as HTMLInputElement;
             if (target) {
@@ -82,13 +85,13 @@ export class SelectBase extends Factory {
         });
     }    
 
-    onFocus() {
+    _onFocus() {
         this._input.addEventListener("focus", (_) => {
             this._optionContainer.classList.add("open");
         });
     }
 
-    onFocusOut() {
+    _onFocusOut() {
         document.addEventListener("click", (e) => {
             if (e.target !== this._input) {
                 this._optionContainer.classList.remove("open");

@@ -20,7 +20,7 @@ class Factory {
     }
 }
 
-export class ButtonBase extends Factory {
+export abstract class ButtonBase extends Factory {
 
     _button: HTMLButtonElement;
 
@@ -29,7 +29,9 @@ export class ButtonBase extends Factory {
         this._button = super.createButton();
     }
 
-    onClick() {
+    abstract onClick(): void;
+
+    _onClick() {
         return;
     }
 }

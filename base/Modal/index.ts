@@ -1,7 +1,6 @@
-import { VBoxBase as VBox } from "../VBox";
-import { BackgroundBase as Background } from "../Background";
 import { ModalProps } from "../../props";
 import { UI } from "../../util";
+import { BackgroundDefault, VBoxDefault } from "../../default";
 
 class Factory {
 
@@ -24,27 +23,25 @@ class Factory {
     }
 
     createCloseBtn(): HTMLDivElement {
-        const closeButton = new Background({width: "25px", height: "25px", src: "/close.svg"});
+        const closeButton = new BackgroundDefault({width: "25px", height: "25px", src: "/close.svg"});
         closeButton._background.style.marginLeft = "auto";
         return closeButton._background;
     }
 
     createContent(): HTMLDivElement {
-        const content = new VBox({
-            children: []
-        });
+        const content = new VBoxDefault();
         return content._vBox;
     }
 }
 
-export class ModalBase extends Factory {
+export abstract class ModalBase extends Factory {
 
     _modal: HTMLDivElement;
     _container: HTMLDivElement;
     _closeBtn: HTMLDivElement;
     _content: HTMLDivElement;
 
-    constructor(props: ModalProps) {
+    constructor(props: ModalProps = {}) {
         super(props);
         this._modal = super.createModal();
         this._container = super.createContainer();
@@ -56,7 +53,9 @@ export class ModalBase extends Factory {
         document.body.appendChild(this._modal);
     }
 
-    onClose() {
+    abstract onClose(): void;
+
+    _onClose() {
         this._closeBtn.addEventListener("click", (e) => {
             e.preventDefault();
             UI.closeModal();

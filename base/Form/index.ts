@@ -19,7 +19,7 @@ class Factory {
     }
 }
 
-export class FormBase extends Factory {
+export abstract class FormBase extends Factory {
 
     _form: HTMLFormElement;
 
@@ -28,7 +28,9 @@ export class FormBase extends Factory {
         this._form = super.createForm();
     }
 
-    onSubmit() {
+    abstract onSubmit(): void;
+
+    _onSubmit() {
         return;
     }
 }

@@ -1,7 +1,5 @@
+import { InputDefault, SpanDefault, VBoxDefault } from "../../default";
 import { TableProps } from "../../props";
-import { InputBase as Input } from "../Input";
-import { SpanBase as Span } from "../Span";
-import { VBoxBase as VBox } from "../VBox";
 
 class Factory {
 
@@ -24,7 +22,7 @@ class Factory {
     }
 
     createTable(): HTMLDivElement {
-        const table = new VBox();
+        const table = new VBoxDefault();
         table._vBox.classList.add("table");
         this._table = table._vBox;
         return table._vBox;
@@ -63,7 +61,7 @@ class Factory {
     createCheckBoxColumn(): { checkboxInput: HTMLInputElement, checkboxColumn: HTMLDivElement } {
         const checkboxColumn = document.createElement("div");
         checkboxColumn.classList.add("checkbox-column");
-        const checkboxInput = new Input({
+        const checkboxInput = new InputDefault({
             variant: "checkbox"
         });
         checkboxColumn.appendChild(checkboxInput._input);
@@ -71,7 +69,7 @@ class Factory {
     }
 
     createColumnLink(i: number): HTMLSpanElement {
-        const columnLink = new Span(this._props.columns[i]);
+        const columnLink = new SpanDefault(this._props.columns[i]);
         if (this._props.useAutoSort) {
             columnLink._span.style.cursor = "pointer";
             columnLink._span.addEventListener('click', (_) => {
@@ -175,11 +173,11 @@ class Factory {
                     container.appendChild(checkboxColumn);
                 }
                 if (keys.includes(this._props.columns[j])) {
-                    const span = new Span(data[i][this._props.columns[j]]);
+                    const span = new SpanDefault(data[i][this._props.columns[j]]);
                     span._span.classList.add("cell-span");
                     column.appendChild(span._span);
                 } else {
-                    const span = new Span("");
+                    const span = new SpanDefault("");
                     column.appendChild(span._span);
                 }
                 container.appendChild(column);
@@ -189,7 +187,7 @@ class Factory {
     }
 }
 
-export class TableBase extends Factory {
+export abstract class TableBase extends Factory {
 
     _table: HTMLDivElement;
     _container: HTMLDivElement;

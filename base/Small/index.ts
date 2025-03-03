@@ -1,4 +1,4 @@
-export class SmallBase {
+export abstract class SmallBase {
 
     _small: HTMLSpanElement;
 

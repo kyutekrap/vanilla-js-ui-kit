@@ -18,7 +18,7 @@ class Factory {
     }
 }
 
-export class FooterBase extends Factory {
+export abstract class FooterBase extends Factory {
 
     _footer: HTMLDivElement;
 

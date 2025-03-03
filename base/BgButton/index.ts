@@ -1,5 +1,5 @@
-import { BackgroundBase as Background } from "../Background";
 import { BgButtonProps } from "../../props";
+import { BackgroundDefault } from "../../default";
 
 class Factory {
 
@@ -21,7 +21,7 @@ class Factory {
     }
 
     createBackground(): HTMLDivElement {
-        const bg = new Background({
+        const bg = new BackgroundDefault({
             width: this._props.width,
             height: this._props.height,
             src: this._props.src
@@ -30,7 +30,7 @@ class Factory {
     }
 }
 
-export class BgButtonBase extends Factory {
+export abstract class BgButtonBase extends Factory {
 
     _bgButton: HTMLDivElement;
     _background: HTMLDivElement;
@@ -42,7 +42,9 @@ export class BgButtonBase extends Factory {
         this._bgButton.appendChild(this._background);
     }
 
-    onClick() {
+    abstract onClick(): void;
+
+    _onClick() {
         return;
     }
 }

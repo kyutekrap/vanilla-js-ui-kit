@@ -1,4 +1,4 @@
-export class SpanBase {
+export abstract class SpanBase {
 
     _span: HTMLSpanElement;
 
