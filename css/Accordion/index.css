@@ -9,7 +9,6 @@
 
 .accordion .accordion-header {
     cursor: pointer;
-    transition: background-color 0.3s ease;
     padding: var(--padding) 0;
 }
 
@@ -19,6 +18,7 @@
     visibility: hidden;
     position: relative;
     overflow: visible;
+    transition: all 3ms ease;
 }
 
 .accordion .accordion-content.open {

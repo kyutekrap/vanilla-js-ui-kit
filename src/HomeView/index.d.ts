@@ -3,6 +3,8 @@ export declare class Home {
     toggleDarkMode(): void;
     createTemplate(): void;
     createAppBar(): void;
-    createTable(): void;
+    createSection(...args: Node[]): void;
+    createAccordion(): HTMLDivElement;
+    createTable(): HTMLDivElement;
     createFooter(): void;
 }
