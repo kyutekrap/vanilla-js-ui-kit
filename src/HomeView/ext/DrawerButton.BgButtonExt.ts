@@ -1,6 +1,6 @@
-import { BgButtonBase } from "../../../base";
-import { BgButtonProps } from "../../../props";
-import { UI } from "../../../util";
+import { BgButtonBase } from "vanilla-js-ui-kit";
+import { BgButtonProps } from "vanilla-js-ui-kit/props";
+import { UI } from "vanilla-js-ui-kit/util";
 
 export class DrawerButton extends BgButtonBase {
     constructor(props: BgButtonProps) {
