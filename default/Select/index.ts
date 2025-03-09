@@ -6,7 +6,7 @@ export class SelectDefault extends SelectBase {
         super(props);
         this._input.addEventListener("change", (e) => this.onChange(e));
         this._input.addEventListener("focus", (e) => this.onFocus(e));
-        this._input.addEventListener("blur", (e) => this.onFocusOut(e));
+        this._input.addEventListener("blur", (e) => this.onBlur(e));
     }
 
     onChange(e: any) {
@@ -17,7 +17,7 @@ export class SelectDefault extends SelectBase {
         super._onFocus(e);
     }
 
-    onFocusOut(e: any) {
-        super._onFocusOut(e);
+    onBlur(e: any) {
+        super._onBlur(e);
     }
 }

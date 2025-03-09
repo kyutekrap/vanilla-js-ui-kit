@@ -11,7 +11,7 @@ export class FormFactory {
     createForm(): HTMLFormElement {
         const form = document.createElement("form");
         form.classList.add("form");
-        form.classList.add(this._props.layout === "vertical" ? "vbox" : "hbox");
+        form.classList.add(this._props.layout === "vertical" ? "vBox" : "hBox");
         for (var i=0; i < this._props.children.length; i++) {
             form.appendChild(this._props.children[i]);
         }

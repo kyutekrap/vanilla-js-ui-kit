@@ -30,6 +30,7 @@ export class SnackbarFactory {
             src: "/close.svg"
         });
         closeButton._background.style.filter = "invert(1)";
+        closeButton._background.style.cursor = "pointer";
         return closeButton._background;
     }
 }

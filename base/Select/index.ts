@@ -20,7 +20,7 @@ export abstract class SelectBase extends SelectFactory {
 
     abstract onChange(e: any): void;
     abstract onFocus(e: any): void;
-    abstract onFocusOut(e: any): void;
+    abstract onBlur(e: any): void;
 
     _onChange(e: any): void {
         const target = e.target as HTMLInputElement;
@@ -33,7 +33,7 @@ export abstract class SelectBase extends SelectFactory {
         this._optionContainer.classList.add("open");
     }
 
-    _onFocusOut(e: any) {
+    _onBlur(e: any) {
         if (e.target !== this._input) {
             this._optionContainer.classList.remove("open");
             if (!this._options.includes(this._input.value)) {
