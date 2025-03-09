@@ -1,13 +1,16 @@
 import { UI } from "vanilla-js-ui-kit/util";
 import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
 import { ProfileButton } from "./ext/ProfileButton.BgButtonExt";
-import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault } from "vanilla-js-ui-kit";
+import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault, AccordionDefault } from "vanilla-js-ui-kit";
 
 export class Home {
     constructor() {
         this.toggleDarkMode();
         this.createTemplate();
         this.createAppBar();
+        this.createSection(
+            this.createAccordion()
+        );
         this.createFooter();
     }
 
@@ -48,6 +51,22 @@ export class Home {
         new DrawerDefault({ children: [] });
     }
 
+    createSection(...args: Node[]) {
+        new SectionDefault({
+            children: args
+        });
+    }
+
+    createAccordion() {
+        const accordion = new AccordionDefault({
+            caption: "Check out my table.",
+            children: [
+                this.createTable()
+            ]
+        });
+        return accordion._accordion;
+    }
+
     createTable() {
         const table = new TableDefault({
             columns: ["Column 1", "Column 2", "Column 3"],
@@ -71,11 +90,7 @@ export class Home {
             checkbox: true,
             useAutoSort: true
         });
-        new SectionDefault({
-            children: [
-                table._table
-            ]
-        });
+        return table._table;
     }
 
     createFooter() {
