@@ -14,6 +14,7 @@ export class SearchFactory {
     createSearch(): HTMLDivElement {
         const search = new HBoxDefault();
         search._hBox.classList.add("search");
+        search._hBox.style.width = this._props.width ?? "100%";
         return search._hBox;
     }
 

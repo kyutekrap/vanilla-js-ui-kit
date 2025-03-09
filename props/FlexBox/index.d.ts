@@ -1,5 +1,5 @@
 export interface FlexBoxProps {
-    alignSelf?: string;
-    flexGrow?: string;
+    alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+    flexGrow?: number;
     children?: Node[];
 }

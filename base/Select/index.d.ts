@@ -8,8 +8,8 @@ export declare abstract class SelectBase extends SelectFactory {
     constructor(props: SelectProps);
     abstract onChange(e: any): void;
     abstract onFocus(e: any): void;
-    abstract onFocusOut(e: any): void;
+    abstract onBlur(e: any): void;
     _onChange(e: any): void;
     _onFocus(e: any): void;
-    _onFocusOut(e: any): void;
+    _onBlur(e: any): void;
 }

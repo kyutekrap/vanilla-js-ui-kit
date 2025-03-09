@@ -1,5 +1,5 @@
 import { BgButtonBase } from "../../../base";
-import { SmallDefault } from "../../../default";
+import { ButtonDefault } from "../../../default";
 import { BgButtonProps } from "../../../props";
 import { openModal } from "../../../util/UI/openModal";
 
@@ -10,7 +10,13 @@ export class ProfileButton extends BgButtonBase {
     }
 
     onClick(e: any): void {
-        const small = new SmallDefault("Logout")
-        openModal([small._small]);
+        const button = new ButtonDefault({
+            variant: "text",
+            size: "medium",
+            content: "Logout",
+            width: "100%",
+            type: "button"
+        });
+        openModal([button._button]);
     }
 }

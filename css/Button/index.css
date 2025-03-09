@@ -1,6 +1,6 @@
 .button {
     border-radius: var(--border-radius);
-    transition: all 3s ease;
+    transition: all 3ms ease;
     cursor: pointer;
 }
 
@@ -27,12 +27,12 @@
     background-color: var(--main-color-light);
 }
 
-.button .text {
+.button.text {
     background-color: transparent;
     border: 1px transparent;
 }
 
-.button .text:hover, .button .text.active {
+.button.text:hover, .button.text.active {
     background-color: var(--main-color-light);
     border-color: var(--main-color-light);
 }

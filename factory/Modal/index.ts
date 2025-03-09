@@ -25,6 +25,7 @@ export class ModalFactory {
     createCloseBtn(): HTMLDivElement {
         const closeButton = new BackgroundDefault({width: "20px", height: "20px", src: "/close.svg"});
         closeButton._background.style.marginLeft = "auto";
+        closeButton._background.style.marginBottom = "10px";
         closeButton._background.style.cursor = "pointer";
         return closeButton._background;
     }
