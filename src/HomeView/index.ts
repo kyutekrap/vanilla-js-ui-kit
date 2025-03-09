@@ -1,6 +1,7 @@
 import { UI } from "../../util";
 import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
-import { AppBarDefault, BgButtonDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault } from "../../default";
+import { ProfileButton } from "./ext/ProfileButton.BgButtonExt";
+import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault } from "../../default";
 
 export class Home {
     constructor() {
@@ -30,7 +31,7 @@ export class Home {
         const flexBox = new FlexBoxDefault({
             flexGrow: "1"
         });
-        const profileBtn = new BgButtonDefault({
+        const profileBtn = new ProfileButton({
             src: "/profile.svg",
             rounded: true,
             width: "27px",
