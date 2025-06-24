@@ -19,12 +19,10 @@ export class BackgroundFactory {
     }
 
     createBadge(): HTMLDivElement | undefined {
-        if (this._props.badge) {
-            const badgeContainer = document.createElement("div");
-            const badgeContent = new SmallDefault(this._props.badge);
-            badgeContainer.appendChild(badgeContent._small);
-            badgeContainer.classList.add("badge");
-            return badgeContainer;
-        }
+        const badgeContainer = document.createElement("div");
+        const badgeContent = new SmallDefault(this._props.badge);
+        badgeContainer.appendChild(badgeContent._small);
+        badgeContainer.classList.add("badge");
+        return badgeContainer;
     }
 }

@@ -24,7 +24,8 @@ export class BgButtonFactory {
         const bg = new BackgroundDefault({
             width: this._props.width,
             height: this._props.height,
-            src: this._props.src
+            src: this._props.src,
+            badge: this._props.badge
         });
         return bg._background;
     }

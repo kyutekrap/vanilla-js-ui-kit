@@ -9,8 +9,10 @@ export abstract class BackgroundBase extends BackgroundFactory {
     constructor(props: BackgroundProps) {
         super(props);
         this._background = super.createBackground();
-        this._badge = super.createBadge();
-        if (this._badge) this._background.appendChild(this._badge);
+        if (props.badge) {
+            this._badge = super.createBadge() as HTMLDivElement;
+            this._background.appendChild(this._badge);
+        }
     }
 
     abstract onClick(e: any): void;

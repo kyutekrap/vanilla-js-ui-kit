@@ -1,7 +1,7 @@
 import { UI } from "../../util";
 import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
 import { ProfileButton } from "./ext/ProfileButton.BgButtonExt";
-import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault, AccordionDefault } from "../../default";
+import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault, AccordionDefault, TextareaDefault, FileInputDefault, LinkDefault, BgButtonDefault } from "../../default";
 
 export class Home {
     constructor() {

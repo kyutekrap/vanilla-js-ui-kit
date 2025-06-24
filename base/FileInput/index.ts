@@ -14,9 +14,9 @@ export abstract class FileInputBase extends FileInputFactory {
         super(props);
         this._textInput = super.createTextInput();
         this._fileInput = super.createFileInput();
-        this._editable = props.editable;
+        this._editable = props.editable ?? true;
         this._size = props.size;
-        this._multiselect = props.multiselect;
+        this._multiselect = props.multiselect ?? false;
     }
 
     abstract onClick(e: any): void;

@@ -4,7 +4,7 @@ import { FileInputProps } from "../../props/FileInput";
 export class FileInputDefault extends FileInputBase {
     constructor(props: FileInputProps) {
         super(props);
-        this._fileInput.addEventListener("click", (e) => this.onClick(e));
+        this._textInput.addEventListener("click", (e) => this.onClick(e));
         this._fileInput.addEventListener("change", (e) => this.onChange(e));
     }
 

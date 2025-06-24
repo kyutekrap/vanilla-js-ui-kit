@@ -13,9 +13,9 @@ export class FileInputFactory {
         const textInput = document.createElement("input");
         textInput.classList.add("input");
         textInput.readOnly = true;
-        textInput.value = this._props.value;
-        textInput.placeholder = this._props.placeholder;
-        textInput.style.width = this._props.width;
+        textInput.value = this._props.value ?? "";
+        textInput.placeholder = this._props.placeholder ?? "";
+        textInput.style.width = this._props.width ?? "100%";
         return textInput;
     }
 
