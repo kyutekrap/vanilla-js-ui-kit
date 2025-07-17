@@ -28,7 +28,13 @@ export class SearchFactory {
     }
 
     createInput(): HTMLInputElement {
-        const input = new InputDefault();
+        const input = new InputDefault({
+            name: this._props.name,
+            placeholder: this._props.placeholder,
+            editable: this._props.editable ?? true,
+            value: this._props.value,
+            required: this._props.required ?? false
+        });
         return input._input;
     }
 }

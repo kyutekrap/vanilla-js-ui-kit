@@ -2,6 +2,7 @@ import { SelectBase } from "../../base/Select";
 import { SelectProps } from "../../props/Select";
 
 export class SelectDefault extends SelectBase {
+    
     constructor(props: SelectProps) {
         super(props);
         this._input.addEventListener("change", (e) => this.onChange(e));
@@ -19,5 +20,9 @@ export class SelectDefault extends SelectBase {
 
     onBlur(e: any) {
         super._onBlur(e);
+    }
+
+    refreshOptions(options: string[]): void {
+        super._refreshOptions(options);
     }
 }

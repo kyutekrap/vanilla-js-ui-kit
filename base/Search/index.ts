@@ -7,7 +7,7 @@ export abstract class SearchBase extends SearchFactory {
     _icon: HTMLDivElement;
     _input: HTMLInputElement;
 
-    constructor(props: SearchProps = { width: "100%" }) {
+    constructor(props: SearchProps = {}) {
         super(props);
         this._search = super.createSearch();
         this._icon = super.createIcon();

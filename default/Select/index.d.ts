@@ -5,4 +5,5 @@ export declare class SelectDefault extends SelectBase {
     onChange(e: any): void;
     onFocus(e: any): void;
     onBlur(e: any): void;
+    refreshOptions(options: string[]): void;
 }

@@ -33,16 +33,21 @@ export class SelectFactory {
         const optionContainer = document.createElement("div");
         optionContainer.classList.add("optionContainer");
         for (var i=0; i < this._props.options.length; i++) {
-            const option = new SpanDefault(this._props.options[i]);
-            option._span.classList.add("option");
-            option._span.addEventListener("click", (e: MouseEvent) => {
-                input.value = (e.target as HTMLElement).innerHTML;
-                this.filterItems(optionContainer, (e.target as HTMLElement).innerHTML);
-            });
-            optionContainer.appendChild(option._span);
+            const option = this.createOption(this._props.options[i], optionContainer, input);
+            optionContainer.appendChild(option);
         }
         optionContainer.style.width = `calc(${this._props.width} - var(--half-padding) - 2px)`;
         return optionContainer;
+    }
+
+    createOption(text: string, optionContainer: HTMLDivElement, input: HTMLInputElement): HTMLSpanElement {
+        const option = new SpanDefault(text);
+        option._span.classList.add("option");
+        option._span.addEventListener("click", (e: MouseEvent) => {
+            input.value = (e.target as HTMLElement).innerHTML;
+            this.filterItems(optionContainer, (e.target as HTMLElement).innerHTML);
+        });
+        return option._span;
     }
 
     filterItems(optionContainer: HTMLDivElement, filterKey: string): void {

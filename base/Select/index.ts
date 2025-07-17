@@ -21,6 +21,7 @@ export abstract class SelectBase extends SelectFactory {
     abstract onChange(e: any): void;
     abstract onFocus(e: any): void;
     abstract onBlur(e: any): void;
+    abstract refreshOptions(options: string[]): void;
 
     _onChange(e: any): void {
         const target = e.target as HTMLInputElement;
@@ -40,5 +41,13 @@ export abstract class SelectBase extends SelectFactory {
                 this._input.value = "";
             }
         }
+    }
+
+    _refreshOptions(options: string[]): void {
+        this._optionContainer.replaceChildren(
+            ...options.map(option => super.createOption(option, this._optionContainer, this._input))
+        );
+        this._input.value = "";
+        this._options = options;
     }
 }

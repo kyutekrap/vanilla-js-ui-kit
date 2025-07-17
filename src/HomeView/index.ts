@@ -1,7 +1,7 @@
 import { UI } from "../../util";
 import { DrawerButton } from "./ext/DrawerButton.BgButtonExt";
 import { ProfileButton } from "./ext/ProfileButton.BgButtonExt";
-import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault, AccordionDefault, TextareaDefault, FileInputDefault, LinkDefault, BgButtonDefault } from "../../default";
+import { AppBarDefault, FlexBoxDefault, SmallDefault, SnackbarDefault, SubHeaderDefault, TableDefault, SectionDefault, ModalDefault, FooterDefault, DrawerDefault, AccordionDefault, TextareaDefault, FileInputDefault, LinkDefault, BgButtonDefault, SelectDefault, SearchDefault } from "../../default";
 
 export class Home {
     constructor() {
@@ -48,7 +48,11 @@ export class Home {
                 profileBtn._bgButton
             ]
         });
-        new DrawerDefault({ children: [] });
+        new DrawerDefault({ children: [
+            new SearchDefault({
+                width: "calc(100%} - var(--padding))"
+            })._search
+        ] });
     }
 
     createSection(...args: Node[]) {
