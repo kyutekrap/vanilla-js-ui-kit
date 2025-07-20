@@ -1,5 +1,5 @@
 import { SnackbarProps } from "../../props/Snackbar";
-import { UI } from "../../util";
+import { closeSnackbar } from "../../util";
 import { SnackbarFactory } from "../../factory/Snackbar";
 
 export abstract class SnackbarBase extends SnackbarFactory {
@@ -21,6 +21,6 @@ export abstract class SnackbarBase extends SnackbarFactory {
     abstract onClose(e: any): void;
 
     _onClose(e: any) {
-        UI.closeSnackbar();
+        closeSnackbar();
     }
 }

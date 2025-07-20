@@ -1,10 +1,6 @@
 export declare class Home {
-    constructor();
-    toggleDarkMode(): void;
-    createTemplate(): void;
-    createAppBar(): void;
-    createSection(...args: Node[]): void;
+    initialize(): Node[];
+    createSearchbar(): HTMLDivElement;
     createAccordion(): HTMLDivElement;
     createTable(): HTMLDivElement;
-    createFooter(): void;
 }

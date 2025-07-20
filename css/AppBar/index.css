@@ -3,4 +3,5 @@
     background-color: var(--bg-color);
     padding: var(--half-padding) var(--padding) var(--half-padding) var(--padding);
     border-bottom: 1px solid var(--neutral-color);
+    height: 30px;
 }

@@ -3,7 +3,7 @@
 @import url('./Background/index.css');
 @import url('./Button/index.css');
 @import url('./BgButton/index.css');
-@import url('./BorderLine/index.css');
+@import url('./Box/index.css');
 @import url('./Drawer/index.css');
 @import url('./FileInput/index.css');
 @import url('./FlexBox/index.css');
@@ -16,7 +16,6 @@
 @import url('./Line/index.css');
 @import url('./Link/index.css');
 @import url('./Modal/index.css');
-@import url('./Search/index.css');
 @import url('./Section/index.css');
 @import url('./Select/index.css');
 @import url('./Small/index.css');
@@ -26,6 +25,8 @@
 @import url('./Table/index.css');
 @import url('./Textarea/index.css');
 @import url('./VBox/index.css');
+@import url('./StyledInput/index.css');
+@import url('./Loader/index.css');
 
 :root {
     --bg-color: #ffffff;

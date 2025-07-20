@@ -20,5 +20,6 @@ export * from "./FileInput";
 export * from "./Grid";
 export * from "./Line";
 export * from "./FlexBox";
-export * from "./BorderLine";
-export * from "./Search";
+export * from "./Box";
+export * from "./StyledInput";
+export * from "./Loader";

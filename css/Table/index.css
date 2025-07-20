@@ -1,47 +1,63 @@
-.table {
-    font-size: var(--normal-font-size);
-}
-
-.table .inner-grid {
-    display: grid;
+.table-container {
+    width: 100%;
     overflow-x: auto;
 }
 
-.table .checkbox-column {
-    padding: var(--padding);
-    border-bottom: 1px solid var(--neutral-color);
-    display: flex;
-    align-items: center;
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    width: 100%;
+    border: 1px solid var(--gray-color);
+    table-layout: fixed;
+    min-width: 100%;
+    width: max-content;
 }
 
-.table .column {
-    position: relative;
-    text-align: left;
-    padding: var(--padding);
-    border-bottom: 1px solid var(--neutral-color);
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
-}
-
-.table .column-border {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: var(--quarter-padding);
-    cursor: col-resize;
-    z-index: 1;
-}
-
-.table .cell-span {
+.table th {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
-    color: var(--text-color);
+    max-width: 150px;
 }
 
-.table .active {
+.table th,
+.table td {
+    padding: var(--quarter-padding);
+    text-align: left;
+    border-right: 1px solid var(--gray-color);
+    border-bottom: 1px solid var(--gray-color);
+}
+
+.table th:last-child,
+.table td:last-child {
+    border-right: none;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table th {
+    position: relative;
+}
+
+.table th.active {
     color: var(--main-color);
+}
+
+.table .resizer {
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: col-resize;
+    user-select: none;
+    z-index: 1;
+}
+
+.checkbox-cell {
+    width: 16px;
+    text-align: center;
 }

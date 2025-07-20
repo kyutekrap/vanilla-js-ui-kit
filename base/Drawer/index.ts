@@ -1,4 +1,4 @@
-import { UI } from "../../util";
+import { closeDrawer } from "../../util";
 import { DrawerProps } from "../../props/Drawer";
 import { DrawerFactory } from "../../factory/Drawer";
 
@@ -21,6 +21,6 @@ export abstract class DrawerBase extends DrawerFactory {
     abstract onClose(e: any): void;
 
     _onClose(e: any) {
-        UI.closeDrawer();
+        closeDrawer();
     }
 }

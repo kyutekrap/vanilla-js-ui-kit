@@ -1,190 +1,217 @@
-import { TableProps } from "../../props/Table";
-import { SpanDefault } from "../../default/Span";
-import { VBoxDefault } from "../../default/VBox";
 import { InputDefault } from "../../default/Input";
+import { TableProps } from "../../props/Table";
+
+export class Sorter {
+    column: number | undefined = undefined;
+    direction: "asc" | "desc" | undefined = undefined;
+}
 
 export class TableFactory {
 
     _props: TableProps;
-    _columnWidths: string[];
-    _checkboxes: HTMLInputElement[];
-    _activeIndex: number | null;
-    _filterCol: string;
-    _filterDir: 1 | -1;
-    _table: HTMLDivElement | undefined;
-    _container: HTMLDivElement | undefined;
+    _sorter: Sorter | undefined;
 
     constructor(props: TableProps) {
         this._props = props;
-        this._columnWidths = this.getColumnWidths();
-        this._checkboxes = [];
-        this._activeIndex = null;
-        this._filterCol = '';
-        this._filterDir = 1;
-    }
-
-    createTable(): HTMLDivElement {
-        const table = new VBoxDefault();
-        table._vBox.classList.add("table");
-        this._table = table._vBox;
-        return table._vBox;
-    }
-
-    getColumnWidths(): string[] {
-        var containerWidth;
-        if (!this._props.defaultWidth) {
-            const rootStyles = getComputedStyle(document.documentElement);
-            const defaultWidth = parseFloat(rootStyles.getPropertyValue("--section-width-default"));
-            const mobileWidth = parseFloat(rootStyles.getPropertyValue("--section-width-mobile"));
-            const percentage = window.matchMedia("(max-width: 768px)").matches ? mobileWidth : defaultWidth;
-            containerWidth = window.innerWidth * percentage;
-        } else {
-            containerWidth = this._props.defaultWidth;
+        if (this._props.sortable ?? true) {
+            this._sorter = new Sorter();
         }
+    }
+
+    createTableContainer(): HTMLDivElement {
+        const container = document.createElement("div");
+        container.classList.add("table-container");
+        return container;
+    }
+
+    createTable(container: HTMLDivElement): HTMLTableElement {
+        const table = document.createElement("table");
+        table.classList.add("table");
+        container.appendChild(table);
+        return table;
+    }
+
+    createHeaderSection(table: HTMLTableElement): HTMLTableSectionElement {
+        const thead = document.createElement("thead");
+        table.appendChild(thead);
+        return thead;
+    }
+
+    createHeader(table: HTMLTableElement, thead: HTMLTableSectionElement): HTMLTableSectionElement {
+        const tr = document.createElement("tr");
         if (this._props.checkbox) {
-            const dividedWidth = Math.round((containerWidth - 50) / this._props.columns.length - 15);
-            const actualWidth = dividedWidth < 150 ? 150 : dividedWidth;
-            return ['50px', ...Array(this._props.columns.length).fill(`${actualWidth}px`)];
-        } else {
-            const dividedWidth = Math.round(containerWidth / this._props.columns.length - 15);
-            const actualWidth = dividedWidth < 150 ? 150 : dividedWidth;
-            return Array(this._props.columns.length).fill(`${actualWidth}px`);
-        }
-    }
-
-    createContainer(): HTMLDivElement {
-        const innerGrid = document.createElement("div");
-        innerGrid.classList.add("inner-grid");
-        innerGrid.style.gridTemplateColumns = this._columnWidths.join(" ");
-        this._container = innerGrid;
-        return innerGrid;
-    }
-
-    createCheckBoxColumn(): { checkboxInput: HTMLInputElement, checkboxColumn: HTMLDivElement } {
-        const checkboxColumn = document.createElement("div");
-        checkboxColumn.classList.add("checkbox-column");
-        const checkboxInput = new InputDefault({
-            variant: "checkbox"
-        });
-        checkboxColumn.appendChild(checkboxInput._input);
-        return { checkboxInput: checkboxInput._input, checkboxColumn: checkboxColumn };
-    }
-
-    createColumnLink(i: number): HTMLSpanElement {
-        const columnLink = new SpanDefault(this._props.columns[i]);
-        if (this._props.useAutoSort) {
-            columnLink._span.style.cursor = "pointer";
-            columnLink._span.addEventListener('click', (_) => {
-                this.sortHandler(columnLink._span.textContent || '');
+            const th = document.createElement("th");
+            const checkbox = new InputDefault({
+                variant: "checkbox"
             });
-            if (this._props.columns[i] === this._filterCol) {
-                columnLink._span.classList.add("active");
-                columnLink._span.innerHTML = `${columnLink._span.innerHTML} ${this._filterDir === 1 ? '↑' : '↓'}`;
-            } else {
-                columnLink._span.classList.remove("active");
-                columnLink._span.innerHTML = this._props.columns[i];
-            }
+            checkbox._input.addEventListener("change", (e) => {
+                this.selectAllCheckboxes(table, e.target as HTMLInputElement);
+            });
+            th.appendChild(checkbox._input);
+            th.classList.add("checkbox-cell");
+            tr.appendChild(th);
         }
-        return columnLink._span;
+        this._props.columns.forEach(column => {
+            const th = document.createElement("th");
+            th.textContent = column;
+            tr.appendChild(th);
+        });
+        thead.appendChild(tr);
+        return thead;
     }
 
-    sortHandler(filterCol: string) {
-        if (this._filterCol === filterCol) {
-            this._filterDir *= -1;
-        } else {
-            this._filterCol = filterCol;
-            this._filterDir = 1;
-        }
-        const sortedData = this._props.data.sort((a, b) => {
-            const valA = a[this._filterCol];
-            const valB = b[this._filterCol];
-            if (valA < valB) return -1 * this._filterDir;
-            if (valA > valB) return 1 * this._filterDir;
+    createRowSection(table: HTMLTableElement): HTMLTableSectionElement {
+        const tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+        return tbody;
+    }
+
+    createRows(tbody: HTMLTableSectionElement): HTMLTableSectionElement {
+        this._props.data.forEach((rowData, index) => {
+            const tr = document.createElement("tr");
+            if (this._props.checkbox) {
+                const td = document.createElement("td");
+                const checkbox = new InputDefault({
+                    variant: "checkbox",
+                    name: index.toString()
+                });
+                td.appendChild(checkbox._input);
+                td.classList.add("checkbox-cell");
+                tr.appendChild(td);
+            }
+            this._props.columns.forEach(column => {
+                const td = document.createElement("td");
+                td.textContent = rowData[column] || "";
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+        return tbody;
+    }
+
+    replaceRows(table: HTMLTableElement, data: Record<string, any>[] | undefined): void {
+        if (data) this._props.data = data;
+        const tbody = table.querySelector("tbody");
+        const newTbody = document.createElement("tbody");
+        tbody?.replaceWith(this.createRows(newTbody));
+    }
+
+    rearrangeHeaders(table: HTMLTableElement, columns: string[]): void {
+        this._props.columns = columns;
+        const thead = table.querySelector("thead");
+        const newThead = document.createElement("thead");
+        thead?.replaceWith(this.createHeader(table, newThead));
+        this.replaceRows(table, this._props.data);
+    }
+
+    selectAllCheckboxes(table: HTMLTableElement, target: HTMLInputElement): void {
+        const checkboxes = table.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(checkbox => {
+            (checkbox as HTMLInputElement).checked = target.checked;
+        });
+    }
+
+    getSelectedRows(table: HTMLTableElement): number[] {
+        const selectedRows: number[] = [];
+        const checkboxes = table.querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(checkbox => {
+            if ((checkbox as HTMLInputElement).checked) {
+                selectedRows.push(parseInt((checkbox as HTMLInputElement).name));
+            }
+        });
+        return selectedRows;
+    }
+
+    enableResizing(table: HTMLTableElement): void {
+        const thElements = table.querySelectorAll("th");
+
+        thElements.forEach((th, index) => {
+            if (this._props.checkbox && index === 0) return;
+
+            const resizer = document.createElement("div");
+            resizer.classList.add("resizer");
+            th.appendChild(resizer);
+
+            let startX: number, startWidth: number;
+
+            resizer.addEventListener("mousedown", (e: MouseEvent) => {
+                startX = e.pageX;
+                startWidth = th.offsetWidth;
+
+                const onMouseMove = (e: MouseEvent) => {
+                    const newWidth = startWidth + (e.pageX - startX);
+                    th.style.width = `${newWidth}px`;
+
+                    table.querySelectorAll("tr").forEach(row => {
+                        const cell = row.children[index] as HTMLElement;
+                        if (cell && cell !== th) {
+                            cell.style.width = `${newWidth}px`;
+                        }
+                    });
+                };
+
+                const onMouseUp = () => {
+                    document.removeEventListener("mousemove", onMouseMove);
+                    document.removeEventListener("mouseup", onMouseUp);
+                };
+
+                document.addEventListener("mousemove", onMouseMove);
+                document.addEventListener("mouseup", onMouseUp);
+            });
+        });
+    }
+
+    enableSorting(thead: HTMLTableSectionElement, sorter: Sorter): void {
+        thead.querySelectorAll("th").forEach((th, index) => {
+            this.onSort(th as HTMLTableCellElement, index, thead, sorter);
+        });
+    }
+
+    onSort(th: HTMLTableCellElement, index: number, thead: HTMLTableSectionElement, sorter: Sorter): void {
+        if (this._props.checkbox && index === 0) return;
+        th.style.cursor = "pointer";
+        th.addEventListener("click", () => {
+            const actualIndex = index - (this._props.checkbox ? 1 : 0);
+            if (actualIndex < 0) return;
+
+            if (sorter.column === actualIndex) {
+                sorter.direction = sorter.direction === "asc" ? "desc" : "asc";
+            } else {
+                sorter.column = actualIndex;
+                sorter.direction = "asc";
+            }
+
+            this.resort(thead, sorter);
+        });
+    }
+
+    resort(thead: HTMLTableSectionElement, sorter: Sorter): void {
+        thead.querySelectorAll("th").forEach((_th, _index) => {
+            const actualIndex = _index - (this._props.checkbox ? 1 : 0);
+
+            if (actualIndex === sorter.column) _th.classList.add("active");
+            else _th.classList.remove("active");
+        });
+        
+        this._props.data.sort((a, b) => {
+            const aValue = Object.values(a)[sorter.column as number];
+            const bValue = Object.values(b)[sorter.column as number];
+            if (aValue < bValue) return sorter.direction === "asc" ? -1 : 1;
+            if (aValue > bValue) return sorter.direction === "asc" ? 1 : -1;
             return 0;
         });
-        if (this._table !== undefined) {
-            const innerGrid = this._table.querySelector('.inner-grid') as HTMLDivElement;
-            innerGrid.innerHTML = '';
-            this.createColumns(innerGrid);
-            this.createRows(innerGrid, sortedData);
-        }
+        this.replaceRows(thead.parentElement as HTMLTableElement, this._props.data);
     }
 
-    createColumnBorder(i: number): HTMLDivElement {
-        const columnBorder = document.createElement("div");
-        columnBorder.classList.add("column-border");
-        columnBorder.dataset.index = i.toString();
-        columnBorder.addEventListener("mousedown", (e) => this.handleMouseDown(e));
-        return columnBorder;
+    resetSorter(thead: HTMLTableSectionElement, sorter: Sorter): void {
+        sorter.column = undefined;
+        sorter.direction = undefined;
+        thead.querySelectorAll("th").forEach(th => {
+            th.classList.remove("active");
+        });
     }
 
-    handleMouseDown(event: MouseEvent): void {
-        const target = event.target as HTMLElement;
-        const index = parseInt(target?.dataset.index || '0', 10) + (this._props.checkbox ? 1 : 0);
-        this._activeIndex = index;
-        document.addEventListener("mousemove", (e) => this.handleMouseMove(e));
-        document.addEventListener("mouseup", this.handleMouseUp);
-    }    
-
-    handleMouseMove = (event: MouseEvent): void => {
-        if (this._activeIndex !== null && this._container !== undefined) {
-            const newWidth = event.clientX - this._container.getBoundingClientRect().left;
-            const minWidth = 150;
-            this._columnWidths[this._activeIndex] = `${Math.max(minWidth, newWidth)}px`;
-            this._container.style.gridTemplateColumns = this._columnWidths.join(" ");
-        }
-    };
-
-    handleMouseUp = (e: MouseEvent) => {
-        this._activeIndex = null;
-        document.removeEventListener("mousemove", this.handleMouseMove);
-        document.removeEventListener("mouseup", this.handleMouseUp);
-    };
-
-    createColumns(container: HTMLDivElement): HTMLDivElement {
-        for (var i=0; i < this._props.columns.length; i++) {
-            if (i === 0 && this._props.checkbox) {
-                const { checkboxInput, checkboxColumn } = this.createCheckBoxColumn();
-                checkboxInput.addEventListener("change", (e) => {
-                    for (var j=0; j<this._checkboxes.length; j++) {
-                        this._checkboxes[j].checked = (e.target as HTMLInputElement).checked;
-                    }
-                });
-                container.appendChild(checkboxColumn);
-            }
-            const column = document.createElement("div");
-            column.classList.add("column");
-            const columnLink = this.createColumnLink(i);
-            column.appendChild(columnLink);
-            const columnBorder = this.createColumnBorder(i);
-            column.appendChild(columnBorder);
-            container.appendChild(column);
-        }
-        return container;
-    }
-
-    createRows(container: HTMLDivElement, data: Record<string, any>[] = this._props.data) {
-        for (var i=0; i < data.length; i++) {
-            const keys = Object.keys(data[i]);
-            for (var j=0; j < this._props.columns.length; j++) {
-                const column = document.createElement("div");
-                column.classList.add("column");
-                if (j === 0 && this._props.checkbox) {
-                    const { checkboxInput, checkboxColumn } = this.createCheckBoxColumn();
-                    this._checkboxes.push(checkboxInput);
-                    container.appendChild(checkboxColumn);
-                }
-                if (keys.includes(this._props.columns[j])) {
-                    const span = new SpanDefault(data[i][this._props.columns[j]]);
-                    span._span.classList.add("cell-span");
-                    column.appendChild(span._span);
-                } else {
-                    const span = new SpanDefault("");
-                    column.appendChild(span._span);
-                }
-                container.appendChild(column);
-            }
-        }
-        return container;
+    isExhausted(tableContainer: HTMLDivElement): boolean {
+        return tableContainer.scrollTop + tableContainer.clientHeight >= tableContainer.scrollHeight;
     }
 }

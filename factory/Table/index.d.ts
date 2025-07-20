@@ -1,27 +1,26 @@
 import { TableProps } from "../../props/Table";
+export declare class Sorter {
+    column: number | undefined;
+    direction: "asc" | "desc" | undefined;
+}
 export declare class TableFactory {
     _props: TableProps;
-    _columnWidths: string[];
-    _checkboxes: HTMLInputElement[];
-    _activeIndex: number | null;
-    _filterCol: string;
-    _filterDir: 1 | -1;
-    _table: HTMLDivElement | undefined;
-    _container: HTMLDivElement | undefined;
+    _sorter: Sorter | undefined;
     constructor(props: TableProps);
-    createTable(): HTMLDivElement;
-    getColumnWidths(): string[];
-    createContainer(): HTMLDivElement;
-    createCheckBoxColumn(): {
-        checkboxInput: HTMLInputElement;
-        checkboxColumn: HTMLDivElement;
-    };
-    createColumnLink(i: number): HTMLSpanElement;
-    sortHandler(filterCol: string): void;
-    createColumnBorder(i: number): HTMLDivElement;
-    handleMouseDown(event: MouseEvent): void;
-    handleMouseMove: (event: MouseEvent) => void;
-    handleMouseUp: (e: MouseEvent) => void;
-    createColumns(container: HTMLDivElement): HTMLDivElement;
-    createRows(container: HTMLDivElement, data?: Record<string, any>[]): HTMLDivElement;
+    createTableContainer(): HTMLDivElement;
+    createTable(container: HTMLDivElement): HTMLTableElement;
+    createHeaderSection(table: HTMLTableElement): HTMLTableSectionElement;
+    createHeader(table: HTMLTableElement, thead: HTMLTableSectionElement): HTMLTableSectionElement;
+    createRowSection(table: HTMLTableElement): HTMLTableSectionElement;
+    createRows(tbody: HTMLTableSectionElement): HTMLTableSectionElement;
+    replaceRows(table: HTMLTableElement, data: Record<string, any>[] | undefined): void;
+    rearrangeHeaders(table: HTMLTableElement, columns: string[]): void;
+    selectAllCheckboxes(table: HTMLTableElement, target: HTMLInputElement): void;
+    getSelectedRows(table: HTMLTableElement): number[];
+    enableResizing(table: HTMLTableElement): void;
+    enableSorting(thead: HTMLTableSectionElement, sorter: Sorter): void;
+    onSort(th: HTMLTableCellElement, index: number, thead: HTMLTableSectionElement, sorter: Sorter): void;
+    resort(thead: HTMLTableSectionElement, sorter: Sorter): void;
+    resetSorter(thead: HTMLTableSectionElement, sorter: Sorter): void;
+    isExhausted(tableContainer: HTMLDivElement): boolean;
 }

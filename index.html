@@ -7,8 +7,11 @@
     </head>
     <body>
         <script type="module">
-            import { Home } from "/src/HomeView";
-            new Home();
+            import { Canvas, Home, Footer } from "/src";
+            const canvas = new Canvas();
+            const home = new Home();
+            canvas.createCanvas(home.initialize());
+            new Footer();
         </script>
     </body>
 </html>

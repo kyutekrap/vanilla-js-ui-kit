@@ -1,7 +1,7 @@
 .accordion {
     border: 1px solid var(--neutral-color);
     border-radius: var(--border-radius);
-    padding: 0px var(--padding);
+    padding: var(--padding);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -9,7 +9,6 @@
 
 .accordion .accordion-header {
     cursor: pointer;
-    padding: var(--padding) 0;
 }
 
 .accordion .accordion-content {
@@ -25,4 +24,5 @@
     height: auto;
     opacity: 1;
     visibility: visible;
+    padding-top: var(--padding);
 }

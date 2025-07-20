@@ -1,5 +1,5 @@
 import { ModalProps } from "../../props/Modal";
-import { UI } from "../../util";
+import { closeModal } from "../../util";
 import { ModalFactory } from "../../factory/Modal";
 
 export abstract class ModalBase extends ModalFactory {
@@ -25,6 +25,6 @@ export abstract class ModalBase extends ModalFactory {
 
     _onClose(e: any) {
         e.preventDefault();
-        UI.closeModal();
+        closeModal();
     }
 }

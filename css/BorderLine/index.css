@@ -1,5 +1,0 @@
-.borderLine {
-    padding: var(--padding);
-    border: 1px solid var(--neutral-color);
-    border-radius: var(--border-radius);
-}

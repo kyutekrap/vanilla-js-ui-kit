@@ -1,7 +1,7 @@
 {
   "name": "vanilla-js-ui-kit",
   "description": "Build component-driven web pages in TS without HTML and React",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "main": "./index.js",
   "repository": {
