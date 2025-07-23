@@ -1,5 +1,6 @@
 import { BackgroundProps } from "../../props/Background";
 import { BackgroundFactory } from "../../factory/Background";
+import { SmallDefault } from "../../default";
 
 export abstract class BackgroundBase extends BackgroundFactory {
 
@@ -16,8 +17,15 @@ export abstract class BackgroundBase extends BackgroundFactory {
     }
 
     abstract onClick(e: any): void;
+    abstract updateBadge(badge: string): void;
 
-    _onClick(e: any) {
+    _onClick(e: any): void {
         return;
+    }
+
+    _updateBadge(badge: string): void {
+        this._props.badge = badge;
+        const badgeContent = new SmallDefault(this._props.badge);
+        this._badge?.replaceChildren(badgeContent._small);
     }
 }

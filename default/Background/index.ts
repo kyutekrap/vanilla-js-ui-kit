@@ -2,6 +2,7 @@ import { BackgroundBase } from "../../base/Background";
 import { BackgroundProps } from "../../props/Background";
 
 export class BackgroundDefault extends BackgroundBase {
+
     constructor(props: BackgroundProps) {
         super(props); 
         this._background.addEventListener("click", (e) => this.onClick(e));
@@ -9,5 +10,9 @@ export class BackgroundDefault extends BackgroundBase {
 
     onClick(e: any) {
         super._onClick(e);
+    }
+
+    updateBadge(badge: string): void {
+        super._updateBadge(badge);
     }
 }

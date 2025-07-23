@@ -4,6 +4,7 @@ import { BgButtonProps } from "../../../props";
 import { openModal } from "../../../util/openModal";
 
 export class ProfileButton extends BgButtonBase {
+    
     constructor(props: BgButtonProps) {
         super(props);
         this._bgButton.addEventListener("click", this.onClick);
@@ -18,5 +19,9 @@ export class ProfileButton extends BgButtonBase {
             type: "button"
         });
         openModal([button._button]);
+    }
+
+    updateBadge(badge: string): void {
+        super._updateBadge(badge);
     }
 }
