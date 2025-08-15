@@ -1,5 +1,5 @@
 export interface InputProps {
-    variant?: "number" | "text" | "date" | "datetime-local" | "checkbox" | "password" | "email" | "url" | "file";
+    variant?: "number" | "text" | "date" | "datetime-local" | "checkbox" | "radio" | "password" | "email" | "url" | "file";
     editable?: boolean;
     placeholder?: string;
     value?: string;

@@ -4,6 +4,8 @@ export interface SelectProps {
     editable?: boolean;
     placeholder?: string;
     width?: string;
-    name?: string;
+    name: string;
     required?: boolean;
+    multiselect?: boolean;
+    searchable?: boolean;
 }

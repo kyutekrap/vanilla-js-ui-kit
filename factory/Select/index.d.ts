@@ -5,6 +5,7 @@ export declare class SelectFactory {
     createSelect(): HTMLDivElement;
     createInput(): HTMLInputElement;
     createOptionContainer(input: HTMLInputElement): HTMLDivElement;
-    createOption(text: string, optionContainer: HTMLDivElement, input: HTMLInputElement): HTMLSpanElement;
+    createSearchbar(optionContainer: HTMLDivElement): HTMLDivElement;
+    createOption(text: string, input: HTMLInputElement): HTMLDivElement;
     filterItems(optionContainer: HTMLDivElement, filterKey: string): void;
 }

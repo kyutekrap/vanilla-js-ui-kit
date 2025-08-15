@@ -20,7 +20,6 @@
 
 .select .option {
     display: block;
-    cursor: pointer;
     padding-top: var(--quarter-padding);
     padding-bottom: var(--quarter-padding);
 }

@@ -4,6 +4,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: var(--quarter-padding);
 }
 
 .bgButton:hover, .bgButton.active {
@@ -12,5 +13,4 @@
 
 .bgButton.rounded {
     border-radius: 50%;
-    padding: var(--quarter-padding);
 }

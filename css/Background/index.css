@@ -10,10 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22px;
-    height: 22px;
+    width: 90%;
+    height: 90%;
     background-color: var(--main-color);
     position: absolute;
-    top: -2px;
-    right: -2px;
+    top: -40%;
+    right: -40%;
 }

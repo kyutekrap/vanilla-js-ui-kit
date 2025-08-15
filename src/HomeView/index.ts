@@ -1,31 +1,59 @@
-import { TableDefault, AccordionDefault, StyledInputDefault, BackgroundDefault } from "../../default";
+import { TableDefault, AccordionDefault, FormDefault, InputDefault, SmallDefault, VBoxDefault, SelectDefault } from "../../default";
 import { data } from "./data";
 
 export class Home {
 
     initialize(): Node[] {
         return [
-            this.createSearchbar(),
+            this.createForm(),
             this.createAccordion()
         ];
     }
 
-    createSearchbar() {
-        const search = new BackgroundDefault({
-            src: "/glass.svg",
-            width: "15px",
-            height: "15px",
+    createForm() {
+        const form = new FormDefault({
+            layout: "horizontal",
+            children: [
+                this.createTextInput("First Name"),
+                this.createTextInput("Last Name"),
+                this.createDropdown("Country", ["USA", "Canada", "Mexico"])
+            ]
         });
-        const input = new StyledInputDefault({
-            content: search._background,
-            width: "300px"
+        return form._form;
+    }
+
+    createTextInput(strLabel: string) {
+        const label = new SmallDefault(strLabel);
+        const input = new InputDefault({});
+        const inputContainer = new VBoxDefault({
+            children: [
+                label._small,
+                input._input
+            ]
         });
-        return input._styledInput;
+        return inputContainer._vBox;
+    }
+
+    createDropdown(strLabel: string, options: string[]) {
+        const label = new SmallDefault(strLabel);
+        const select = new SelectDefault({
+            options: options,
+            multiselect: false,
+            searchable: true,
+            name: "country"
+        });
+        const inputContainer = new VBoxDefault({
+            children: [
+                label._small,
+                select._select
+            ]
+        });
+        return inputContainer._vBox;
     }
 
     createAccordion() {
         const accordion = new AccordionDefault({
-            caption: "Check out my table.",
+            caption: "Data Table",
             children: [
                 this.createTable()
             ]
