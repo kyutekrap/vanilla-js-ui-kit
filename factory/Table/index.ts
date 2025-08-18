@@ -66,34 +66,25 @@ export class TableFactory {
         return tbody;
     }
 
-    createRows(tbody: HTMLTableSectionElement): HTMLTableSectionElement {
-        this._props.data.forEach((rowData, index) => {
-            const tr = document.createElement("tr");
-            if (this._props.checkbox) {
-                const td = document.createElement("td");
-                const checkbox = new InputDefault({
-                    variant: "checkbox",
-                    name: index.toString()
-                });
-                td.appendChild(checkbox._input);
-                td.classList.add("checkbox-cell");
-                tr.appendChild(td);
-            }
-            this._props.columns.forEach(column => {
-                const td = document.createElement("td");
-                td.textContent = rowData[column] || "";
-                tr.appendChild(td);
+    createRow(index: number): HTMLTableRowElement {
+        const tr = document.createElement("tr");
+        if (this._props.checkbox) {
+            const td = document.createElement("td");
+            const checkbox = new InputDefault({
+                variant: "checkbox",
+                name: index.toString()
             });
-            tbody.appendChild(tr);
-        });
-        return tbody;
+            td.appendChild(checkbox._input);
+            td.classList.add("checkbox-cell");
+            tr.appendChild(td);
+        }
+        return tr;
     }
 
-    replaceRows(table: HTMLTableElement, data: Record<string, any>[] | undefined): void {
-        if (data) this._props.data = data;
-        const tbody = table.querySelector("tbody");
-        const newTbody = document.createElement("tbody");
-        tbody?.replaceWith(this.createRows(newTbody));
+    createCell(content: string): HTMLTableCellElement {
+        const td = document.createElement("td");
+        td.textContent = content;
+        return td;
     }
 
     rearrangeHeaders(table: HTMLTableElement, columns: string[]): void {
@@ -101,7 +92,6 @@ export class TableFactory {
         const thead = table.querySelector("thead");
         const newThead = document.createElement("thead");
         thead?.replaceWith(this.createHeader(table, newThead));
-        this.replaceRows(table, this._props.data);
     }
 
     selectAllCheckboxes(table: HTMLTableElement, target: HTMLInputElement): void {
@@ -200,7 +190,6 @@ export class TableFactory {
             if (aValue > bValue) return sorter.direction === "asc" ? 1 : -1;
             return 0;
         });
-        this.replaceRows(thead.parentElement as HTMLTableElement, this._props.data);
     }
 
     resetSorter(thead: HTMLTableSectionElement, sorter: Sorter): void {

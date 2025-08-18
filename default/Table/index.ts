@@ -5,6 +5,11 @@ export class TableDefault extends TableBase {
 
     constructor(props: TableProps) {
         super(props);
+        this.fillData(this._props.data, this._props.columns);
+    }
+
+    fillData(data: Record<string, any>[], columns: string[]): void {
+        super._fillData(data, columns);
     }
 
     onSort(th: HTMLTableCellElement, index: number): void {
@@ -19,8 +24,8 @@ export class TableDefault extends TableBase {
         return super._addData(data);
     }
 
-    replaceData(data: Record<string, any>[]): void {
-        return super._replaceData(data);
+    resetData(): void {
+        return super._resetData();
     }
 
     rearrangeHeader(columns: string[]): void {
